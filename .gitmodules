@@ -18,7 +18,7 @@
 	url = https://github.com/vim-scripts/winmanager.git
 [submodule "vim/bundle/vim-github"]
 	path = vim/bundle/vim-github
-	url = https://github.com/thinca/vim-github.git
+	url = http://github.com/thinca/vim-github.git
 [submodule "vim/bundle/vim-browser"]
 	path = vim/bundle/vim-browser
 	url = https://github.com/redtower/vim-browser.git
