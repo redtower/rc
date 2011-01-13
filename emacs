@@ -3,14 +3,15 @@
 ; misc
 ;=======================================================================
 (mouse-wheel-mode 1)                            ; ホイールマウス
-(menu-bar-mode -1)                              ; メニューバー表示有無
-                                                ;     （-1:表示しない、1:表示する）
-(tool-bar-mode -1)                              ; ツールバー表示有無
-                                                ;     （-1:表示しない、1:表示する）
+(menu-bar-mode 0)                               ; メニューバー表示有無
+                                                ;     （0:表示しない、1:表示する）
+(if window-system                               ; ツールバー表示有無
+    (tool-bar-mode 0))                          ;     （0:表示しない、1:表示する）
 (global-font-lock-mode t)                       ; 文字の色つけ
 (setq line-number-mode t)                       ; カーソルのある行番号を表示
 (auto-compression-mode t)                       ; 日本語infoの文字化け防止
-(set-scroll-bar-mode 'right)                    ; スクロールバーを右に表示
+(if window-system
+    (set-scroll-bar-mode 'right))               ; スクロールバーを右に表示
 (global-set-key "\C-z" 'undo)                   ; undo
 (setq default-tab-width 4)                      ; tab幅を4
 (setq make-backup-files nil)                    ; バックアップファイルを作らない
