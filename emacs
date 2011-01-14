@@ -1,3 +1,10 @@
+;=======================================================================
+; color-theme
+;       ref. http://code.google.com/p/gnuemacscolorthemetest/
+;=======================================================================
+(require 'color-theme)
+(color-theme-initialize)
+(color-theme-dark-blue)
 
 ;=======================================================================
 ; misc
@@ -13,7 +20,12 @@
 (if window-system
     (set-scroll-bar-mode 'right))               ; スクロールバーを右に表示
 (global-set-key "\C-z" 'undo)                   ; undo
-(setq default-tab-width 4)                      ; tab幅を4
+(setq-default tab-width 4)                      ; TAB幅=4
+(setq-default indent-tabs-mode nil)             ; ソフトタブ
+(setq tab-stop-list                             ; タブ幅の倍数を設定
+ '(  4   8  12  16  20  24  28  32  36  40
+    44  48  52  56  60  64  68  72  76  80
+    84  88  92  96 100 104 108 112 116 120))
 (setq make-backup-files nil)                    ; バックアップファイルを作らない
 (setq delete-auto-save-files t)                 ; 終了時にオートセーブファイルを消す
 (global-set-key "\C-h" 'backward-delete-char)   ; ctrl-hでバックスペース
@@ -46,3 +58,4 @@
 ; Symbolic link ファイル編集時に yes/no を聞かないようにす
 ;=======================================================================
 (custom-set-variables '(vc-follow-symlinks t))
+
