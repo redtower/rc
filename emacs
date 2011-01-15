@@ -1,10 +1,26 @@
-;=======================================================================
-; color-theme
-;       ref. http://code.google.com/p/gnuemacscolorthemetest/
-;=======================================================================
-(require 'color-theme)
-(color-theme-initialize)
-(color-theme-dark-blue)
+(when window-system
+;; default color
+(add-to-list 'default-frame-alist '(cursor-color . "SlateBlue2"))
+(add-to-list 'default-frame-alist '(mouse-color . "SlateBlue2"))
+(add-to-list 'default-frame-alist '(foreground-color . "gray10"))
+(add-to-list 'default-frame-alist '(background-color . "white"))
+(set-face-foreground 'modeline "white")
+(set-face-background 'modeline "SlateBlue2")
+(set-face-background 'region  "LightSteelBlue1")
+
+;; faces
+(set-face-foreground 'font-lock-comment-face "MediumSeaGreen")
+(set-face-foreground 'font-lock-string-face  "purple")
+(set-face-foreground 'font-lock-keyword-face "blue")
+(set-face-foreground 'font-lock-function-name-face "blue")
+(set-face-bold-p 'font-lock-function-name-face t)
+(set-face-foreground 'font-lock-variable-name-face "black")
+(set-face-foreground 'font-lock-type-face "LightSeaGreen")
+(set-face-foreground 'font-lock-builtin-face "purple")
+(set-face-foreground 'font-lock-constant-face "black")
+(set-face-foreground 'font-lock-warning-face "blue")
+(set-face-bold-p 'font-lock-warning-face nil)
+)
 
 ;=======================================================================
 ; misc
