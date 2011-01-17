@@ -80,8 +80,10 @@ fi
 # Emacs
 T1="$HOME/.emacs.el"
 T2="$HOME/.emacs"
+F3="$HOME/howm"
 F1="$HOME/rc/emacs.el"
 F2="$HOME/rc/emacs"
+F3="$HOME/rc/private/howm"
 
 echo "setup Emacs（$T1, $T2） ok? [y/n]"
 read ANSWER
