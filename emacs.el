@@ -75,8 +75,6 @@
 ; howm
 ;=======================================================================
 (add-to-list 'load-path "~/.emacs/site-lisp/howm/")
-;;
-;; howm
 (setq howm-menu-lang 'ja)
 (global-set-key "\C-c,," 'howm-menu)
 
@@ -87,52 +85,41 @@
  '(howm-menu howm-list-all howm-list-recent
              howm-list-grep howm-create
              howm-keyword-to-kill-ring))
-;; リンクを TAB で辿る
-(eval-after-load "howm-mode"
+(eval-after-load "howm-mode"                    ; リンクを TAB で辿る
   '(progn
      (define-key howm-mode-map [tab] 'action-lock-goto-next-link)
      (define-key howm-mode-map [(meta tab)] 'action-lock-goto-previous-link)))
-;; 「最近のメモ」一覧時にタイトル表示
-(setq howm-list-recent-title t)
-;; 全メモ一覧時にタイトル表示
-(setq howm-list-all-title t)
-;; メニューを 2 時間キャッシュ
-(setq howm-menu-expiry-hours 2)
 
-;; howm の時は auto-fill で
-(add-hook 'howm-mode-on-hook 'auto-fill-mode)
-
-;; RET でファイルを開く際, 一覧バッファを消す
-;; C-u RET なら残る
-(setq howm-view-summary-persistent nil)
-
-;; メニューの予定表の表示範囲
-;; 7 日前から
-(setq howm-menu-schedule-days 7)
-;; 3 日後まで
-(setq howm-menu-schedule-days-before 3)
-
-;; howm のファイル名
-;; 以下のスタイルのうちどれかを選んでください
-;; で，不要な行は削除してください
-;; 1 メモ 1 ファイル (デフォルト)
-(setq howm-file-name-format "%Y/%m/%Y-%m-%d-%H%M%S.howm")
-;; 1 日 1 ファイルであれば
-;;(setq howm-file-name-format "%Y/%m/%Y-%m-%d.howm")
-
+(setq howm-list-recent-title t)                 ; 「最近のメモ」一覧時にタイトル表示
+(setq howm-list-all-title t)                    ; 全メモ一覧時にタイトル表示
+(setq howm-menu-expiry-hours 2)                 ; メニューを 2 時間キャッシュ
+(add-hook 'howm-mode-on-hook 'auto-fill-mode)   ; howm の時は auto-fill で
+(setq howm-view-summary-persistent nil)         ; RET でファイルを開く際, 一覧バッファを消す
+                                                ; C-u RET なら残る
+(setq howm-menu-schedule-days 7)                ; メニューの予定表の表示範囲（7 日前から）
+(setq howm-menu-schedule-days-before 3)         ; メニューの予定表の表示範囲（3 日後まで）
+(setq howm-file-name-format                     ; howm のファイル名（1 メモ 1 ファイル）
+      "%Y/%m/%Y-%m-%d-%H%M%S.howm")
 (setq howm-view-grep-parse-line
       "^\\(\\([a-zA-Z]:/\\)?[^:]*\\.howm\\):\\([0-9]*\\):\\(.*\\)$")
-;; 検索しないファイルの正規表現
-(setq
- howm-excluded-file-regexp
- "/\\.#\\|[~#]$\\|\\.bak$\\|/CVS/\\|\\.doc$\\|\\.pdf$\\|\\.ppt$\\|\\.xls$")
+(setq howm-excluded-file-regexp                 ; 検索しないファイルの正規表現
+      "/\\.#\\|[~#]$\\|\\.bak$\\|/CVS/\\|\\.doc$\\|\\.pdf$\\|\\.ppt$\\|\\.xls$")
+; いちいち消すのも面倒なので内容が 0 ならファイルごと削除する
+(if (not (memq 'delete-file-if-no-contents after-save-hook))
+    (setq after-save-hook
+          (cons 'delete-file-if-no-contents after-save-hook)))
+(defun delete-file-if-no-contents ()
+  (when (and
+         (buffer-file-name (current-buffer))
+         (string-match "\\.howm" (buffer-file-name (current-buffer)))
+         (= (point-min) (point-max)))
+    (delete-file
+     (buffer-file-name (current-buffer)))))
 
 ;=======================================================================
 ; clmemo.el
 ;=======================================================================
 (add-to-list 'load-path "~/.emacs/site-lisp/clmemo/")
-;;
-;; clmemo.el
 (autoload 'clmemo "clmemo" "ChangeLog memo mode." t)
 (setq clmemo-file-name "~/clmemo.txt")
 (global-set-key "\C-xM" 'clmemo)
