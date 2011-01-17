@@ -80,7 +80,7 @@ fi
 # Emacs
 T1="$HOME/.emacs.el"
 T2="$HOME/.emacs"
-F3="$HOME/howm"
+T3="$HOME/howm"
 F1="$HOME/rc/emacs.el"
 F2="$HOME/rc/emacs"
 F3="$HOME/rc/private/howm"
