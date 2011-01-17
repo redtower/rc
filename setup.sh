@@ -1,33 +1,93 @@
 #!/bin/sh
 
+LNK(){
+    F=${1};shift;
+    T=${1};shift;
+
+    if [ ! -e ${F} ]; then
+        echo "no such file $F";
+        return;
+    fi
+    if [ -e $T ]; then
+        echo "File already exists $T";
+        return;
+    fi
+
+    ln -s $F $T
+    echo "created $T";
+}
+
 # Firefox Plugin Vimperator
-if [ ! -f ~/.vimperatorrc -a -f ~/rc/vimperatorrc ]; then
-    ln -s ~/rc/vimperatorrc ~/.vimperatorrc
-fi
-if [ ! -f ~/.vimperator -a -f ~/rc/vimperator ]; then
-    ln -s ~/rc/vimperator   ~/.vimperator
+T1="$HOME/.vimperatorrc"
+T2="$HOME/.vimperator"
+F1="$HOME/rc/vimperatorrc"
+F2="$HOME/rc/vimperator"
+
+echo "setup Vimperator（$T1, $T2） ok? [y/n]"
+read ANSWER
+
+if [ "${ANSWER}" = "y" ];
+then
+    LNK $F1 $T1
+    LNK $F2 $T2
 fi
 
 # Vim
-if [ ! -f ~/.vimrc -a -f ~/rc/vimrc ]; then
-    ln -s ~/rc/vimrc    ~/.vimrc
-fi
-if [ ! -f ~/.gvimrc -a -f ~/rc/gvimrc ]; then
-    ln -s ~/rc/gvimrc   ~/.gvimrc
-fi
-if [ ! -f ~/.vim -a -f ~/rc/vim ]; then
-    ln -s ~/rc/vim      ~/.vim
+T1="$HOME/.vimrc"
+T2="$HOME/.gvimrc"
+T3="$HOME/.vim"
+F1="$HOME/rc/vimrc"
+F2="$HOME/rc/gvimrc"
+F3="$HOME/rc/vim"
+
+echo "setup Vim（$T1, $T2, $T2） ok? [y/n]"
+read ANSWER
+
+if [ "${ANSWER}" = "y" ];
+then
+    LNK $F1 $T1
+    LNK $F2 $T2
+    LNK $F3 $T3
 fi
 
 # zsh
-if [ ! -f ~/.zshrc -a -f ~/rc/zshrc ]; then
-    ln -s ~/rc/zshrc ~/.zshrc
+T1="$HOME/.zshrc"
+F1="$HOME/rc/zshrc"
+
+echo "setup zsh（$T1） ok? [y/n]"
+read ANSWER
+
+if [ "${ANSWER}" = "y" ];
+then
+    LNK $F1 $T1
 fi
 
 # git
-if [ ! -f ~/.gitconfig -a -f ~/rc/private/gitconfig ]; then
-    ln -s ~/rc/private/gitconfig ~/.gitconfig
+T1="$HOME/.gitconfig"
+T2="$HOME/.gitignore"
+F1="$HOME/rc/private/gitconfig"
+F2="$HOME/rc/gitignore"
+
+echo "setup Git（$T1, $T2） ok? [y/n]"
+read ANSWER
+
+if [ "${ANSWER}" = "y" ];
+then
+    LNK $F1 $T1
+    LNK $F2 $T2
 fi
-if [ ! -f ~/.gitignore -a -f ~/rc/gitignore ]; then
-    ln -s ~/rc/gitignore ~/.gitignore
+
+# Emacs
+T1="$HOME/.emacs.el"
+T2="$HOME/.emacs"
+F1="$HOME/rc/emacs.el"
+F2="$HOME/rc/emacs"
+
+echo "setup Emacs（$T1, $T2） ok? [y/n]"
+read ANSWER
+
+if [ "${ANSWER}" = "y" ];
+then
+    LNK $F1 $T1
+    LNK $F2 $T2
 fi
