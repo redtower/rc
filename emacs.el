@@ -45,9 +45,13 @@
 (global-set-key "\C-h" 'backward-delete-char)   ; ctrl-hでバックスペース
 (global-unset-key "\C-x\C-u")                   ; C-x C-u が何もしないように変更する
                                                 ;     （undo の typo 時誤動作防止）
-(when
-  (boundp 'show-trailing-whitespace)
-  (setq-default show-trailing-whitespace t))    ; 行末のスペースを強調表示
+;(when
+;  (boundp 'show-trailing-whitespace)
+;  (setq-default show-trailing-whitespace t))    ; 行末のスペースを強調表示
+(load "dired-x")                                ; dired-x （C-x C-j）
+(setq scroll-conservatively 1)                  ; 画面の下端にカーソルがある時に一気にスクロールしないようにする
+(setq frame-title-format					    ; フレームのタイトル指定
+      (concat "%b - emacs@" system-name))
 
 ;=======================================================================
 ; クリップボードと共有する
