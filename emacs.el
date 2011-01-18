@@ -172,3 +172,17 @@
 (autoload 'clmemo "clmemo" "ChangeLog memo mode." t)
 (setq clmemo-file-name "~/clmemo.txt")
 (global-set-key "\C-xM" 'clmemo)
+
+;=======================================================================
+; cua（M-x cua-mode）
+;=======================================================================
+(cua-mode t)
+(setq cua-enable-cua-keys nil)
+
+;=======================================================================
+; wp-emacs
+;=======================================================================
+(add-to-list 'load-path "~/.emacs/site-lisp/wp-emacs/")
+(require 'weblogger)
+(load "~/rc/private/emacs.el" :if-does-not-exist nil)
+(global-set-key "\C-c\C-w" 'weblogger-start-entry)
