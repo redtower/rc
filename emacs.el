@@ -165,9 +165,9 @@
 (defun my-get-dtime ()
   (interactive)
   (my-get-date-gen "[%Y-%m-%d %H:%M]"))
-(global-set-key "\C-c\C-d" 'my-get-date)
-(global-set-key "\C-c\C-t" 'my-get-time)
-(global-set-key "\C-c\ed" 'my-get-dtime)
+(global-set-key "\C-c\C-d" 'calendar)
+(global-set-key "\C-c\C-t" 'my-get-dtime)
+(global-set-key "\C-c\et" 'my-get-time)
 
 ;=======================================================================
 ; clmemo.el
