@@ -190,3 +190,15 @@
 (require 'weblogger)
 (load "~/rc/private/emacs.el" :if-does-not-exist nil)
 (global-set-key "\C-c\C-w" 'weblogger-start-entry)
+
+
+;=======================================================================
+; タグジャンプ（etags M-. M-*）
+;=======================================================================
+(defadvice find-tag (before c-tag-file activate)
+  "Automatically create tags file."
+  (let ((tag-file (concat default-directory "TAGS")))
+    (unless (file-exists-p tag-file)
+      (shell-command "etags *.[ch] *.el .*.el -o TAGS 2>/dev/null"))
+    (visit-tags-table tag-file)))
+
