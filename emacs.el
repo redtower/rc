@@ -40,6 +40,7 @@
     44  48  52  56  60  64  68  72  76  80
     84  88  92  96 100 104 108 112 116 120))
 (setq make-backup-files nil)                    ; バックアップファイルを作らない
+(setq auto-save-mode nil)                       ; 自動保存しない
 (setq delete-auto-save-files t)                 ; 終了時にオートセーブファイルを消す
 (global-set-key "\C-h" 'backward-delete-char)   ; ctrl-hでバックスペース
 (global-unset-key "\C-x\C-u")                   ; C-x C-u が何もしないように変更する
