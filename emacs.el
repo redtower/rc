@@ -41,13 +41,13 @@
 (when window-system
   (setq initial-frame-alist
         (append
-         '((width  . 100)   ; フレーム幅(文字数)
-           (height . 40))   ; フレーム高(文字数)
+         '((width  . 125)   ; フレーム幅(文字数)
+           (height . 42))   ; フレーム高(文字数)
          initial-frame-alist))
   (setq default-frame-alist
         (append
-         '((width  . 100)   ; フレーム幅(文字数)
-           (height . 40))   ; フレーム高(文字数)
+         '((width  . 125)   ; フレーム幅(文字数)
+           (height . 42))   ; フレーム高(文字数)
          default-frame-alist))
 )
 
