@@ -25,7 +25,15 @@
                      (set-default-font "M+2VM+IPAG circle-12")
                      (set-fontset-font (frame-parameter nil 'font)
                                        'japanese-jisx0208
-                                       '("M+2VM+IPAG circle" . "unicode-bmp"))))))))
+                                       '("M+2VM+IPAG circle" . "unicode-bmp")
+                                       ))))
+            ((eq system-type 'darwin)         ; Mac
+              (cond (window-system
+                     (set-default-font "monaco")
+                     (set-fontset-font (frame-parameter nil 'font)
+                                       'japanese-jisx0208
+                                       '("Hiragino Maru Gothic Pro" . "unicode-bmp")
+                                       )))))))
 
 ;=======================================================================
 ; 初期フレーム（initial-frame）、新規フレーム（default-frame）の設定
