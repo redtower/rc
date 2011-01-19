@@ -13,9 +13,7 @@
 (when window-system
   (require 'color-theme)
   (color-theme-initialize)
-  ;(color-theme-aliceblue)   ; Alice Blue
-  ;(color-theme-arjen)       ; Arjen
-  (color-theme-ramangalahy) ; Ramangalahy
+  (color-theme-dark-blue2)   ; Dark Blue2
 )
 
 ;=======================================================================
