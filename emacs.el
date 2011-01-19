@@ -65,27 +65,40 @@
 (auto-compression-mode t)                       ; 日本語infoの文字化け防止
 (if window-system
     (set-scroll-bar-mode 'right))               ; スクロールバーを右に表示
-(global-set-key "\C-z" 'undo)                   ; undo
+(setq make-backup-files nil)                    ; バックアップファイルを作らない
+(setq auto-save-mode nil)                       ; 自動保存しない
+(setq delete-auto-save-files t)                 ; 終了時にオートセーブファイルを消す
+(load "dired-x")                                ; dired-x （C-x C-j）
+(setq scroll-conservatively 1)                  ; 画面の下端にカーソルがある時に
+                                                ; 一気にスクロールしないようにする
+(setq frame-title-format					    ; フレームのタイトル指定
+      (concat "%b - emacs@" system-name))
+
+;=======================================================================
+; キー操作
+;=======================================================================
+(global-set-key   "\C-z"     'undo)                   ; undo
+(global-set-key   "\C-h"     'backward-delete-char)   ; ctrl-hでバックスペース
+(global-set-key   "\C-c\C-e" 'eval-current-buffer)    ; .emacs再読込
+(global-unset-key "\C-x\C-u")                         ; C-x C-u が何もしないように変更する
+                                                      ;     （undo の typo 時誤動作防止）
+
+;=======================================================================
+; タブ
+;=======================================================================
 (setq-default indent-tabs-mode nil)             ; ソフトタブ
 (setq-default tab-width 4)                      ; TAB幅=4
-(setq default-tab-width 4)                      ; TAB幅=4
 (setq tab-stop-list                             ; タブ幅の倍数を設定
  '(  4   8  12  16  20  24  28  32  36  40
     44  48  52  56  60  64  68  72  76  80
     84  88  92  96 100 104 108 112 116 120))
-(setq make-backup-files nil)                    ; バックアップファイルを作らない
-(setq auto-save-mode nil)                       ; 自動保存しない
-(setq delete-auto-save-files t)                 ; 終了時にオートセーブファイルを消す
-(global-set-key "\C-h" 'backward-delete-char)   ; ctrl-hでバックスペース
-(global-unset-key "\C-x\C-u")                   ; C-x C-u が何もしないように変更する
-                                                ;     （undo の typo 時誤動作防止）
-;(when
-;  (boundp 'show-trailing-whitespace)
-;  (setq-default show-trailing-whitespace t))    ; 行末のスペースを強調表示
-(load "dired-x")                                ; dired-x （C-x C-j）
-(setq scroll-conservatively 1)                  ; 画面の下端にカーソルがある時に一気にスクロールしないようにする
-(setq frame-title-format					    ; フレームのタイトル指定
-      (concat "%b - emacs@" system-name))
+
+;=======================================================================
+; 行番号表示
+;=======================================================================
+(add-to-list 'load-path "~/.emacs/site-lisp/linum/")
+(require 'linum)
+(global-linum-mode)
 
 ;=======================================================================
 ; クリップボードと共有する
@@ -148,7 +161,7 @@
 
 ;=======================================================================
 ; C-c C-c ： 現バッファの内容を保存してバッファを消す
-;     ref. http://howm.sourceforge.jp/cgi-bin/hiki/hiki.cgi?SaveAndKillBuffer
+;	ref. http://howm.sourceforge.jp/cgi-bin/hiki/hiki.cgi?SaveAndKillBuffer
 ;=======================================================================
 (defun my-save-and-kill-buffer ()
   (interactive)
@@ -237,14 +250,14 @@
   (my-get-date-gen "[%Y-%m-%d %H:%M]"))
 (global-set-key "\C-c\C-d" 'calendar)
 (global-set-key "\C-c\C-t" 'my-get-dtime)
-(global-set-key "\C-c\et" 'my-get-time)
+(global-set-key "\C-c\et"  'my-get-time)
 
 ;=======================================================================
 ; clmemo.el
 ;=======================================================================
 (add-to-list 'load-path "~/.emacs/site-lisp/clmemo/")
 (autoload 'clmemo "clmemo" "ChangeLog memo mode." t)
-(setq clmemo-file-name "~/clmemo.txt")
+(setq clmemo-file-name "~/rc/private/clmemo.txt")
 (global-set-key "\C-xM" 'clmemo)
 
 ;=======================================================================
