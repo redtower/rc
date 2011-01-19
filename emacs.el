@@ -283,3 +283,45 @@
     (unless (file-exists-p tag-file)
       (shell-command "etags *.[ch] *.el .*.el -o TAGS 2>/dev/null"))
     (visit-tags-table tag-file)))
+
+;=======================================================================
+; 動的略語補完 dabbrev-ja
+;=======================================================================
+(add-to-list 'load-path "~/.emacs/site-lisp/dabbrev/")
+(load "dabbrev-ja")
+(global-set-key "\C-j" 'dabbrev-completion) ;;デフォルトはM-/
+
+;=======================================================================
+; ファイル名コーディング、ロケールコーディング
+;=======================================================================
+(cond
+ ((or (eq window-system 'mac) (eq window-system 'ns))
+  (require 'ucs-normalize)
+  (setq file-name-coding-system 'utf-8-hfs)
+  (setq locale-coding-system    'utf-8-hfs))
+ ((or (eq system-type 'cygwin) (eq system-type 'windows-nt))
+  (setq file-name-coding-system 'shift_jis)
+  (setq locale-coding-system    'utf-8))
+ (t
+  (setq file-name-coding-system 'utf-8)
+  (setq locale-coding-system    'utf-8))
+)
+
+;=======================================================================
+; shell-pop
+;=======================================================================
+(add-to-list 'load-path "~/.emacs/site-lisp/shell-pop/")
+(require 'shell-pop)
+(global-set-key [f8]       'shell-pop)
+(global-set-key "\C-c\C-o" 'shell-pop)
+(global-set-key "\C-t"     'shell-pop)
+
+(cond ((eq system-type 'windows-nt)     ; NTEmacs
+       (shell-pop-set-internal-mode "eshell"))
+      ((eq system-type 'darwin)         ; Mac
+;       (shell-pop-set-internal-mode "ansi-term")
+       (shell-pop-set-internal-mode "eshell")
+      ))
+(shell-pop-set-internal-mode-shell "/bin/zsh")
+(shell-pop-set-window-height 60)
+
