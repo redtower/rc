@@ -98,6 +98,42 @@
 (global-set-key [?\C-.]    'bs-cycle-previous)
 (global-set-key "\C-x\C-b" 'bs-show)
 
+(setq bs-configurations
+      '(;; 名前
+        ;; 表示しなければならないバッファの正規表現
+        ;; 表示しなければならないバッファの関数 (この関数の戻り値が t なら表示する)
+        ;; 表示しないバッファの正規表現
+        ;; 表示しないバッファの関数             (この関数の戻り値が t なら表示しない)
+        ;; 整列関数 (引数は B1 B2)
+        ("soft"
+         "^\\*scratch\\*$"
+         my-must-show-func
+         nil
+         my-dont-show-func nil)
+        ("all" nil nil nil nil nil)
+        ("files" nil nil nil
+         bs-visits-non-file bs-sort-buffer-interns-are-last)
+        ("files-and-scratch"
+         "^\\*scratch\\*$"
+         nil
+         nil
+         bs-visits-non-file
+         bs-sort-buffer-interns-are-last)
+        ("all-intern-last" nil nil nil nil
+         bs-sort-buffer-interns-are-last)))
+
+(defun my-must-show-func (buffer)
+  (if (buffer-modified-p buffer)
+      t
+    nil))
+
+(defun my-dont-show-func (buffer)
+  (if (buffer-file-name buffer)
+      t
+    nil))
+
+(setq bs-default-configuration "soft")
+
 ;=======================================================================
 ; Symbolic link ファイル編集時に yes/no を聞かないようにす
 ;=======================================================================
@@ -218,7 +254,6 @@
 (load "~/rc/private/emacs.el" :if-does-not-exist nil)
 (global-set-key "\C-c\C-w" 'weblogger-start-entry)
 
-
 ;=======================================================================
 ; タグジャンプ（etags M-. M-*）
 ;=======================================================================
@@ -228,4 +263,3 @@
     (unless (file-exists-p tag-file)
       (shell-command "etags *.[ch] *.el .*.el -o TAGS 2>/dev/null"))
     (visit-tags-table tag-file)))
-
