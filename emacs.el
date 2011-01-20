@@ -29,11 +29,14 @@
                                        ))))
             ((eq system-type 'darwin)         ; Mac
               (cond (window-system
-                     (set-default-font "monaco")
-                     (set-fontset-font (frame-parameter nil 'font)
-                                       'japanese-jisx0208
-                                       '("Hiragino Maru Gothic Pro" . "unicode-bmp")
-                                       )))))))
+                     (create-fontset-from-ascii-font "Menlo-12:weight=normal:slant=normal" nil "menlokakugo")
+                     (set-fontset-font "fontset-menlokakugo"
+                                       'unicode
+                                       (font-spec :family "Hiragino Kaku Gothic ProN" :size 14)
+                                       nil
+                                       'append)
+                     (add-to-list 'default-frame-alist '(font . "fontset-menlokakugo"))
+                     ))))))
 
 ;=======================================================================
 ; 初期フレーム（initial-frame）、新規フレーム（default-frame）の設定
