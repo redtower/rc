@@ -85,6 +85,9 @@
 (global-set-key   "\C-c\C-e" 'eval-current-buffer)    ; .emacs再読込
 (global-unset-key "\C-x\C-u")                         ; C-x C-u が何もしないように変更する
                                                       ;     （undo の typo 時誤動作防止）
+(cond ((eq system-type 'darwin)         ; Mac
+       (setq ns-command-modifier   (quote meta ))     ; commandキーとOptionキーを逆にする
+       (setq ns-alternate-modifier (quote super))))
 
 ;=======================================================================
 ; タブ
