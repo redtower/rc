@@ -6,6 +6,11 @@
 ;       (list (expand-file-name "~/.emacs/site-lisp")) load-path))
 
 ;=======================================================================
+; load private-emacs.el
+;=======================================================================
+(load "~/rc/private/emacs.el" :if-does-not-exist nil)
+
+;=======================================================================
 ; color-theme
 ;=======================================================================
 (add-to-list 'load-path "~/.emacs/site-lisp/color-theme/")
@@ -277,7 +282,6 @@
 ;=======================================================================
 (add-to-list 'load-path "~/.emacs/site-lisp/wp-emacs/")
 (require 'weblogger)
-(load "~/rc/private/emacs.el" :if-does-not-exist nil)
 (global-set-key "\C-c\C-w" 'weblogger-start-entry)
 
 ;=======================================================================
