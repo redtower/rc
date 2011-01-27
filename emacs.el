@@ -104,7 +104,7 @@
 (load "dired-x")                                ; dired-x （C-x C-j）
 (setq scroll-conservatively 1)                  ; 画面の下端にカーソルがある時に
                                                 ; 一気にスクロールしないようにする
-(setq frame-title-format					    ; フレームのタイトル指定
+(setq frame-title-format                        ; フレームのタイトル指定
       (concat "%b - emacs@" system-name))
 (setq inhibit-startup-message t)				; 起動時のメッセージを抑止する
 
