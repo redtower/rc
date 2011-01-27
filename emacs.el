@@ -77,6 +77,7 @@
                                                 ; 一気にスクロールしないようにする
 (setq frame-title-format					    ; フレームのタイトル指定
       (concat "%b - emacs@" system-name))
+(setq inhibit-startup-message t)				; 起動時のメッセージを抑止する
 
 ;=======================================================================
 ; キー操作
