@@ -150,6 +150,22 @@
 (define-key global-map (kbd "C-5") 'show-paren-mode)  ; 括弧の対応を見るモードを C-5 でトグルする。
 
 ;=======================================================================
+; fullscreen
+;=======================================================================
+(defun toggle-fullscreen ()
+  (interactive)
+  (cond ((eq system-type 'darwin)         ; Mac
+         (ns-toggle-fullscreen))))
+(global-set-key (kbd "C-c m") 'toggle-fullscreen)
+
+;=======================================================================
+; Darkroom-mode
+;=======================================================================
+(add-to-list 'load-path "~/.emacs/site-lisp/darkroom-mode/")
+(require 'darkroom-mode)
+(global-set-key "\C-cd" 'darkroom-mode)
+
+;=======================================================================
 ; コメントアウト
 ;=======================================================================
 (global-set-key "\C-x;" 'comment-region)              ; コメントアウト
@@ -168,9 +184,9 @@
 ;=======================================================================
 ; 行番号表示
 ;=======================================================================
-(add-to-list 'load-path "~/.emacs/site-lisp/linum/")
-(require 'linum)
-(global-linum-mode)
+;(add-to-list 'load-path "~/.emacs/site-lisp/linum/")
+;(require 'linum)
+;(global-linum-mode)
 
 ;=======================================================================
 ; クリップボードと共有する
