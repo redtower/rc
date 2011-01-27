@@ -99,14 +99,42 @@
 (setq line-number-mode t)                       ; カーソルのある行番号を表示
 (auto-compression-mode t)                       ; 日本語infoの文字化け防止
 (setq make-backup-files nil)                    ; バックアップファイルを作らない
-(setq auto-save-mode nil)                       ; 自動保存しない
 (setq delete-auto-save-files t)                 ; 終了時にオートセーブファイルを消す
 (load "dired-x")                                ; dired-x （C-x C-j）
 (setq scroll-conservatively 1)                  ; 画面の下端にカーソルがある時に
                                                 ; 一気にスクロールしないようにする
 (setq frame-title-format                        ; フレームのタイトル指定
       (concat "%b - emacs@" system-name))
-(setq inhibit-startup-message t)				; 起動時のメッセージを抑止する
+(setq inhibit-startup-message t)                ; 起動時のメッセージを抑止する
+(fset 'yes-or-no-p 'y-or-n-p)                   ; "yes or no"を"y or n"に
+
+;=======================================================================
+; バックアップファイルの作成、自動保存
+;=======================================================================
+(setq make-backup-files nil)                    ; バックアップファイルを作らない
+(setq auto-save-default nil)					; 自動保存しない
+(setq auto-save-mode nil)                       ; 自動保存しない
+
+;=======================================================================
+; C-kで行が連結したときにインデントを減らす
+;=======================================================================
+(defadvice kill-line (before kill-line-and-fixup activate)
+  (when (and (not (bolp)) (eolp))
+    (forward-char)
+    (fixup-whitespace)
+    (backward-char)))
+
+;=======================================================================
+; 全角空白、Tab、改行表示
+;=======================================================================
+(add-to-list 'load-path "~/.emacs/site-lisp/jaspace/")
+(require 'jaspace)
+(setq jaspace-alternate-jaspace-string "□")
+(setq jaspace-alternate-eol-string "↓\n")
+(setq jaspace-highlight-tabs t)
+(setq jaspace-modes
+      (append jaspace-modes
+              '(scheme-mode php-mode yaml-mode js-mode ruby-mode text-mode fundamental-mode LaTeX-mode)))
 
 ;=======================================================================
 ; キー操作
