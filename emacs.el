@@ -359,3 +359,25 @@
 (shell-pop-set-internal-mode-shell "/bin/zsh")
 (shell-pop-set-window-height 60)
 
+;=======================================================================
+; markdown-mode
+;=======================================================================
+(add-to-list 'load-path "~/.emacs/site-lisp/markdown-mode/")
+(autoload 'markdown-mode "markdown-mode.el"
+   "Major mode for editing Markdown files" t)
+(setq auto-mode-alist
+   (cons '("\\.md" . markdown-mode) auto-mode-alist))
+
+;=======================================================================
+; auto-complete（補完候補を自動ポップアップ）
+;=======================================================================
+(add-to-list 'load-path "~/.emacs/site-lisp/auto-complete/")
+(require 'auto-complete)
+(global-auto-complete-mode t)
+(setq ac-modes (cons 'js-mode ac-modes))
+
+;=======================================================================
+; ホームディレクトリに移動する
+;=======================================================================
+(cd "~")
+
