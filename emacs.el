@@ -91,7 +91,9 @@
 (when window-system
     (mouse-wheel-mode t)                        ; ホイールマウス（あり）
     (set-scroll-bar-mode 'right)                ; スクロールバーを右に表示
-    (tool-bar-mode nil))                        ; ツールバー表示なし
+    (tool-bar-mode 0)                           ; ツールバー表示なし
+    (set-frame-parameter nil 'alpha 90)         ; フレームを透過
+)
 (menu-bar-mode nil)                             ; メニューバー表示なし
 (global-font-lock-mode t)                       ; 文字の色つけ
 (setq line-number-mode t)                       ; カーソルのある行番号を表示
