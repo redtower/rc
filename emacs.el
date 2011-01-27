@@ -61,17 +61,14 @@
 ;=======================================================================
 ; misc
 ;=======================================================================
-(if window-system
-    (mouse-wheel-mode 1))                       ; ホイールマウス
-(menu-bar-mode 0)                               ; メニューバー表示有無
-                                                ;     （0:表示しない、1:表示する）
-(if window-system                               ; ツールバー表示有無
-    (tool-bar-mode 0))                          ;     （0:表示しない、1:表示する）
+(when window-system
+    (mouse-wheel-mode t)                        ; ホイールマウス（あり）
+    (set-scroll-bar-mode 'right)                ; スクロールバーを右に表示
+    (tool-bar-mode nil))                        ; ツールバー表示なし
+(menu-bar-mode nil)                             ; メニューバー表示なし
 (global-font-lock-mode t)                       ; 文字の色つけ
 (setq line-number-mode t)                       ; カーソルのある行番号を表示
 (auto-compression-mode t)                       ; 日本語infoの文字化け防止
-(if window-system
-    (set-scroll-bar-mode 'right))               ; スクロールバーを右に表示
 (setq make-backup-files nil)                    ; バックアップファイルを作らない
 (setq auto-save-mode nil)                       ; 自動保存しない
 (setq delete-auto-save-files t)                 ; 終了時にオートセーブファイルを消す
