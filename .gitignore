@@ -2,3 +2,7 @@ private
 vimperator/info
 vim/chalice/cache
 vim/.netrwhist
+
+/emacs.d/ac-comphist.dat
+/emacs.d/auto-save-list/
+/emacs.d/anything-c-adaptive-history
