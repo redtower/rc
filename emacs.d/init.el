@@ -11,30 +11,51 @@
 (load "~/rc/private/emacs.el" :if-does-not-exist nil)
 
 ;=======================================================================
-; auto-install.el
+; os check function
 ;=======================================================================
-(add-to-list 'load-path "~/.emacs.d/elisp/auto-install/")
-(require 'auto-install)
-(setq auto-install-directory "~/.emacs.d/auto-install/")
+(defun is_windows () (eq system-type 'windows-nt))		; Windows
+(defun is_mac     () (member window-system '(mac ns)))	; Mac
+(defun is_linux   () (eq window-system 'x))				; Linux
 
 ;=======================================================================
-; anything
+; my-fav-modes
 ;=======================================================================
-(add-to-list 'load-path "~/.emacs.d/elisp/anything/")
-(require 'anything-startup)
-(global-set-key "\C-x\C-b" 'anything-for-files)
+(defvar my-fav-modes
+  '((emacs-lisp-mode 	. "\\.el$")
+    (common-lisp-mode 	. "\\.\\(cl\\|lisp\\)$")
+    (scheme-mode 		. "\\.scm$")
+    (clojure-mode 		. "\\.clj$")
+    (pir-mode 			. "\\.\\(imc\\|pir\\)$")
+    (malabar-mode 		. "\\.java$")
+    (php-mode 			. "\\.php[45]?$")
+    (yaml-mode 			. "\\.ya?ml$")
+    (js2-mode 			. "\\.js$")
+    (ruby-mode 			. "\\.rb$")
+    (text-mode 			. "\\.txt$")
+    (fundamental-mode 	. nil)
+    (LaTeX-mode 		. "\\.tex$")
+    (org-mode 			. "\\.org$")
+    (css-mode 			. "\\.css$")
+    (nxml-mode 			. "\\.\\(xml\\|svg\\|wsdl\\|xslt\\|wsdd\\|xsl\\|rng\\|xhtml\\|jsp\\|tag\\)$")
+    (markdown-mode 		. "\\.\\(md\\|markdown\\)$")))
 
 ;=======================================================================
-; ファイルにメモを残す（ips + anything-ipa）
-;     M-x     ipa-insert   メモを作成
-;     M-x     ipa-edit     カーソルより後のメモを編集
-;     C-u M-x ipa-edit     カソルより前のメモを編集
-;     M-x     ipa-move     メモを移動
-;     M-x     anything-ipa anything で現在のバッファのメモをリスト。
-;                          TAB でジャンプ。
+; path
 ;=======================================================================
-;(require 'ipa)
-;(require 'anything-ipa)
+;; より下に記述した物が PATH の先頭に追加されます
+(dolist (dir (list
+              "/sbin"
+              "/usr/sbin"
+              "/bin"
+              "/usr/bin"
+              "/usr/local/bin"
+              (expand-file-name "~/bin")
+              (expand-file-name "~/.emacs.d/bin")
+              ))
+ ;; PATH と exec-path に同じ物を追加します
+ (when (and (file-exists-p dir) (not (member dir exec-path)))
+   (setenv "PATH" (concat dir ":" (getenv "PATH")))
+   (setq exec-path (append (list dir) exec-path))))
 
 ;=======================================================================
 ; color-theme
@@ -151,24 +172,108 @@
 ;=======================================================================
 ; キー操作
 ;=======================================================================
-(global-set-key   "\C-z"     'undo)                   ; undo
-(global-set-key   "\C-h"     'backward-delete-char)   ; C-h でバックスペース
 (global-set-key   "\C-c\C-e" 'eval-current-buffer)    ; .emacs再読込
 (global-unset-key "\C-x\C-u")                         ; C-x C-u が何もしないように変更する
                                                       ;     （undo の typo 時誤動作防止）
-(cond ((eq system-type 'darwin)         ; Mac
-       (setq ns-command-modifier   (quote meta ))     ; commandキーとOptionキーを逆にする
-       (setq ns-alternate-modifier (quote super))))
 (define-key global-map (kbd "C-5") 'show-paren-mode)  ; 括弧の対応を見るモードを C-5 でトグルする。
+(global-set-key "\M-d" 'kill-word-at-point)
+(global-set-key "\C-z"      'undo)                    ; undo
+
+;=======================================================================
+; Command-Key and Option-Key Reverse
+;=======================================================================
+(when (is_mac)
+  (setq ns-command-modifier        'meta)
+  (setq ns-alternate-modifier      'super)
+  (setq mac-pass-command-to-system  nil))
+
+;=======================================================================
+;; Move Cursor
+;=======================================================================
+(global-set-key "\C-h"      'backward-delete-char)  ; C-h でバックスペース
+;(global-set-key "\C-h"      'backward-char)        ; ←
+;(global-set-key "\C-j"      'next-line)			; ↓
+;(global-set-key "\C-k"      'previous-line)		; ↑
+;(global-set-key "\C-l"      'forward-char)			; →
+;(global-set-key "\C-n"      'newline-and-indent)   ; 改行してインデント
+;(global-set-key "\C-o"      'kill-line)			; 行削除(C-kの代わり)
+;(global-set-key (kbd "C-'") 'recenter)				; カーソル位置を画面中央に(C-lの代わり)
+
+;=======================================================================
+; Search
+;=======================================================================
+(defvar last-search-char nil)
+(defvar last-search-direction 'forward)
+(defun search-forward-with-char (char)
+  (interactive "cMove to Char: ")
+  ;; カーソルの文字と等しいときはヒットさせない
+  (if (eq (char-after (point)) char) (forward-char))
+  (and (search-forward (char-to-string char) nil t)
+       (backward-char))
+  (setq last-search-char char
+        last-search-direction 'forward))
+(defun search-backward-with-char (char)
+  (interactive "cMove backward to Char: ")
+  (search-backward (char-to-string char) nil t)
+  (setq last-search-char char
+        last-search-direction 'backward))
+(defun search-repeat-with-char ()
+  (interactive)
+  (cond
+   ((eq nil last-search-char) (message "You haven't searched yet. Stupid!"))
+   ((eq last-search-direction 'forward)
+    (or (search-forward-with-char last-search-char) (backward-char)))
+   ((eq last-search-direction 'backward) (search-backward-with-char last-search-char))))
+;(global-set-key "\C-f" 'search-forward-with-char)
+;(global-set-key "\C-b" 'search-backward-with-char)
+(global-set-key (kbd "C-;") 'search-repeat-with-char)
+(global-set-key "\M-s" 'query-replace-regexp)
+
+(defun kill-word-at-point ()
+  (interactive)
+  (let ((char (char-to-string (char-after (point)))))
+    (cond
+     ((string= " " char) (delete-horizontal-space))
+     ((string-match "[\t\n -@\[-`{-~]" char) (kill-word 1))
+     (t (forward-char) (backward-word) (kill-word 1)))))
 
 ;=======================================================================
 ; fullscreen
 ;=======================================================================
 (defun toggle-fullscreen ()
   (interactive)
-  (cond ((eq system-type 'darwin)         ; Mac
-         (ns-toggle-fullscreen))))
+  (cond
+   ((is_mac)   (ns-toggle-fullscreen))
+   ((is_linux) (if (frame-parameter nil 'fullscreen)
+                   (set-frame-parameter nil 'fullscreen nil)
+                   (set-frame-parameter nil 'fullscreen 'fullboth)))))
 (global-set-key (kbd "C-c m") 'toggle-fullscreen)
+
+;=======================================================================
+; auto-install.el
+;=======================================================================
+(add-to-list 'load-path "~/.emacs.d/elisp/auto-install/")
+(require 'auto-install)
+(setq auto-install-directory "~/.emacs.d/auto-install/")
+
+;=======================================================================
+; anything
+;=======================================================================
+(add-to-list 'load-path "~/.emacs.d/elisp/anything/")
+(require 'anything-startup)
+(global-set-key "\C-x\C-b" 'anything-for-files)
+
+;=======================================================================
+; ファイルにメモを残す（ips + anything-ipa）
+;     M-x     ipa-insert   メモを作成
+;     M-x     ipa-edit     カーソルより後のメモを編集
+;     C-u M-x ipa-edit     カソルより前のメモを編集
+;     M-x     ipa-move     メモを移動
+;     M-x     anything-ipa anything で現在のバッファのメモをリスト。
+;                          TAB でジャンプ。
+;=======================================================================
+;(require 'ipa)
+;(require 'anything-ipa)
 
 ;=======================================================================
 ; Darkroom-mode
@@ -347,13 +452,6 @@
     (visit-tags-table tag-file)))
 
 ;=======================================================================
-; 動的略語補完 dabbrev-ja
-;=======================================================================
-(add-to-list 'load-path "~/.emacs.d/elisp/dabbrev/")
-(load "dabbrev-ja")
-(global-set-key "\C-j" 'dabbrev-completion) ;;デフォルトはM-/
-
-;=======================================================================
 ; ファイル名コーディング、ロケールコーディング
 ;=======================================================================
 (cond
@@ -397,17 +495,20 @@
    (cons '("\\.md" . markdown-mode) auto-mode-alist))
 
 ;=======================================================================
+; 動的略語補完 dabbrev-ja
+;=======================================================================
+(add-to-list 'load-path "~/.emacs.d/elisp/dabbrev/")
+(load "dabbrev-ja")
+(global-set-key "\C-j" 'dabbrev-completion) ;;デフォルトはM-/
+
+;=======================================================================
 ; auto-complete（補完候補を自動ポップアップ）
 ;=======================================================================
 (add-to-list 'load-path "~/.emacs.d/elisp/auto-complete/")
 (require 'auto-complete)
 (global-auto-complete-mode t)
-(setq ac-modes (cons 'js-mode ac-modes))
-
-;=======================================================================
-; ホームディレクトリに移動する
-;=======================================================================
-(cd "~")
+;(setq ac-modes (cons 'js-mode ac-modes))
+(setq ac-modes (mapcar 'car my-fav-modes))
 
 ;=======================================================================
 ; 関連付けから外部プログラムを起動する
@@ -449,3 +550,7 @@
 (setq bf-mode-archive-list-verbose t)				; 圧縮されたファイルを表示
 (setq bf-mode-directory-list-verbose t)				; ディレクトリ内のファイル一覧を表示
 
+;=======================================================================
+; ホームディレクトリに移動する
+;=======================================================================
+(cd "~")
