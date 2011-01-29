@@ -51,23 +51,29 @@
 ;=======================================================================
 ; font
 ;=======================================================================
-(cond ((>= 23 emacs-major-version)            ; Enacs 23 以降
-       (cond (window-system
-              (cond ((eq system-type 'windows-nt)    ; NTEmacs
-                     (set-default-font "M+2VM+IPAG circle-12")
-                     (set-fontset-font (frame-parameter nil 'font)
-                                       'japanese-jisx0208
-                                       '("M+2VM+IPAG circle" . "unicode-bmp")
-                                       ))
-                    ((eq system-type 'darwin)         ; Mac
-                     (create-fontset-from-ascii-font "Menlo-12:weight=normal:slant=normal" nil "menlokakugo")
-                     (set-fontset-font "fontset-menlokakugo"
-                                       'unicode
-                                       (font-spec :family "Hiragino Kaku Gothic ProN" :size 14)
-                                       nil
-                                       'append)
-                     (add-to-list 'default-frame-alist '(font . "fontset-menlokakugo"))
-                     ))))))
+(cond
+ ((>= 23 emacs-major-version) ; Enacs 23 以降
+  (cond
+   (window-system
+    (cond
+     ((eq system-type 'windows-nt)   ; NTEmacs
+      (set-default-font "M+2VM+IPAG circle-12")
+      (set-fontset-font
+       (frame-parameter nil 'font)
+       'japanese-jisx0208
+       '("M+2VM+IPAG circle" . "unicode-bmp")
+       ))
+     ((is_mac)         				 ; Mac
+      (create-fontset-from-ascii-font
+       "Menlo-12:weight=normal:slant=normal" nil "menlokakugo")
+      (set-fontset-font
+       "fontset-menlokakugo"
+       'unicode
+       (font-spec :family "Hiragino Kaku Gothic ProN" :size 14)
+       nil
+       'append)
+      (add-to-list 'default-frame-alist '(font . "fontset-menlokakugo"))
+      ))))))
 
 ;=======================================================================
 ; 初期フレーム（initial-frame）、新規フレーム（default-frame）の設定
