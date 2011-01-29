@@ -3,7 +3,7 @@
 ;=======================================================================
 ;(setq load-path
 ;      (append
-;       (list (expand-file-name "~/.emacs/site-lisp")) load-path))
+;       (list (expand-file-name "~/.emacs.d/elisp")) load-path))
 
 ;=======================================================================
 ; load private-emacs.el
@@ -13,14 +13,14 @@
 ;=======================================================================
 ; auto-install.el
 ;=======================================================================
-(add-to-list 'load-path "~/.emacs/site-lisp/auto-install/")
+(add-to-list 'load-path "~/.emacs.d/elisp/auto-install/")
 (require 'auto-install)
 (setq auto-install-directory "~/.emacs.d/auto-install/")
 
 ;=======================================================================
 ; anything
 ;=======================================================================
-(add-to-list 'load-path "~/.emacs/site-lisp/anything/")
+(add-to-list 'load-path "~/.emacs.d/elisp/anything/")
 (require 'anything-startup)
 (global-set-key "\C-x\C-b" 'anything-for-files)
 
@@ -33,13 +33,13 @@
 ;     M-x     anything-ipa anything で現在のバッファのメモをリスト。
 ;                          TAB でジャンプ。
 ;=======================================================================
-(require 'ipa)
-(require 'anything-ipa)
+;(require 'ipa)
+;(require 'anything-ipa)
 
 ;=======================================================================
 ; color-theme
 ;=======================================================================
-(add-to-list 'load-path "~/.emacs/site-lisp/color-theme/")
+(add-to-list 'load-path "~/.emacs.d/elisp/color-theme/")
 
 (when window-system
   (require 'color-theme)
@@ -127,10 +127,10 @@
 ;=======================================================================
 ; 全角空白、Tab、改行表示
 ;=======================================================================
-(add-to-list 'load-path "~/.emacs/site-lisp/jaspace/")
+(add-to-list 'load-path "~/.emacs.d/elisp/jaspace/")
 (require 'jaspace)
 (setq jaspace-alternate-jaspace-string "□")
-(setq jaspace-alternate-eol-string "↓\n")
+;(setq jaspace-alternate-eol-string "↓\n")
 (setq jaspace-highlight-tabs t)
 (setq jaspace-modes
       (append jaspace-modes
@@ -161,7 +161,7 @@
 ;=======================================================================
 ; Darkroom-mode
 ;=======================================================================
-(add-to-list 'load-path "~/.emacs/site-lisp/darkroom-mode/")
+(add-to-list 'load-path "~/.emacs.d/elisp/darkroom-mode/")
 (require 'darkroom-mode)
 (global-set-key "\C-cd" 'darkroom-mode)
 
@@ -184,7 +184,7 @@
 ;=======================================================================
 ; 行番号表示
 ;=======================================================================
-;(add-to-list 'load-path "~/.emacs/site-lisp/linum/")
+;(add-to-list 'load-path "~/.emacs.d/elisp/linum/")
 ;(require 'linum)
 ;(global-linum-mode)
 
@@ -224,7 +224,7 @@
 ;=======================================================================
 ; howm
 ;=======================================================================
-(add-to-list 'load-path "~/.emacs/site-lisp/howm/")
+(add-to-list 'load-path "~/.emacs.d/elisp/howm/")
 (setq howm-menu-lang 'ja)
 (global-set-key "\C-c,," 'howm-menu)
 
@@ -306,7 +306,7 @@
 ;=======================================================================
 ; clmemo.el
 ;=======================================================================
-(add-to-list 'load-path "~/.emacs/site-lisp/clmemo/")
+(add-to-list 'load-path "~/.emacs.d/elisp/clmemo/")
 (autoload 'clmemo "clmemo" "ChangeLog memo mode." t)
 (setq clmemo-file-name "~/rc/private/clmemo.txt")
 (global-set-key "\C-xM" 'clmemo)
@@ -320,7 +320,7 @@
 ;=======================================================================
 ; wp-emacs
 ;=======================================================================
-(add-to-list 'load-path "~/.emacs/site-lisp/wp-emacs/")
+(add-to-list 'load-path "~/.emacs.d/elisp/wp-emacs/")
 (require 'weblogger)
 (global-set-key "\C-c\C-w" 'weblogger-start-entry)
 
@@ -337,7 +337,7 @@
 ;=======================================================================
 ; 動的略語補完 dabbrev-ja
 ;=======================================================================
-(add-to-list 'load-path "~/.emacs/site-lisp/dabbrev/")
+(add-to-list 'load-path "~/.emacs.d/elisp/dabbrev/")
 (load "dabbrev-ja")
 (global-set-key "\C-j" 'dabbrev-completion) ;;デフォルトはM-/
 
@@ -360,7 +360,7 @@
 ;=======================================================================
 ; shell-pop
 ;=======================================================================
-(add-to-list 'load-path "~/.emacs/site-lisp/shell-pop/")
+(add-to-list 'load-path "~/.emacs.d/elisp/shell-pop/")
 (require 'shell-pop)
 (global-set-key [f8]       'shell-pop)
 (global-set-key "\C-c\C-o" 'shell-pop)
@@ -378,7 +378,7 @@
 ;=======================================================================
 ; markdown-mode
 ;=======================================================================
-(add-to-list 'load-path "~/.emacs/site-lisp/markdown-mode/")
+(add-to-list 'load-path "~/.emacs.d/elisp/markdown-mode/")
 (autoload 'markdown-mode "markdown-mode.el"
    "Major mode for editing Markdown files" t)
 (setq auto-mode-alist
@@ -387,7 +387,7 @@
 ;=======================================================================
 ; auto-complete（補完候補を自動ポップアップ）
 ;=======================================================================
-(add-to-list 'load-path "~/.emacs/site-lisp/auto-complete/")
+(add-to-list 'load-path "~/.emacs.d/elisp/auto-complete/")
 (require 'auto-complete)
 (global-auto-complete-mode t)
 (setq ac-modes (cons 'js-mode ac-modes))
@@ -396,4 +396,44 @@
 ; ホームディレクトリに移動する
 ;=======================================================================
 (cd "~")
+
+;=======================================================================
+; 関連付けから外部プログラムを起動する
+;     ref. http://k4zmblog.dtiblog.com/blog-entry-153.html
+;     ref. http://d.hatena.ne.jp/sr10/20110118/1295280250
+;=======================================================================
+(defun uenox-dired-winstart ()
+  "Type '[uenox-dired-winstart]': win-start the current line's file."
+  (interactive)
+  (if (eq major-mode 'dired-mode)
+      (let ((fname (dired-get-filename)))
+        (w32-shell-execute "open" fname)
+        (message "win-started %s" fname))))
+;;; dired のキー割り当て追加
+(add-hook 'dired-mode-hook
+          (lambda ()
+            (define-key dired-mode-map "z" 'uenox-dired-winstart))) ;; キーバインド 
+
+;=======================================================================
+; zencoding-mode
+;=======================================================================
+(add-to-list 'load-path "~/.emacs.d/elisp/zencoding-mode/")
+(require 'zencoding-mode) 
+(add-hook 'sgml-mode-hook 'zencoding-mode) ; html-modeとかで自動出来にzencodingできるようにする
+(define-key zencoding-mode-keymap (kbd "C-c C-n") 'zencoding-expand-line)
+(define-key zencoding-preview-keymap (kbd "C-c C-n") 'zencoding-preview-accept)
+
+;=======================================================================
+; bf-mode
+;=======================================================================
+(add-to-list 'load-path "~/.emacs.d/elisp/bf-mode/")
+(require 'bf-mode)
+(setq bf-mode-browsing-size 10000)					; 別ウィンドウに表示するサイズの上限
+(setq bf-mode-except-ext '("\\.exe$" "\\.com$"))	; 別ウィンドウに表示しないファイルの拡張子
+(setq bf-mode-force-browse-exts						; 容量がいくつであっても表示して欲しいもの
+      (append '("\\.texi$" "\\.el$")
+              bf-mode-force-browse-exts))
+(setq bf-mode-html-with-w3m t)						; html は w3m で表示する
+(setq bf-mode-archive-list-verbose t)				; 圧縮されたファイルを表示
+(setq bf-mode-directory-list-verbose t)				; ディレクトリ内のファイル一覧を表示
 
