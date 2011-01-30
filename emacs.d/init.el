@@ -489,11 +489,11 @@
 (global-set-key "\C-c\C-o" 'shell-pop)
 (global-set-key "\C-t"     'shell-pop)
 
-(cond ((eq system-type 'windows-nt)     ; NTEmacs
+(cond ((is_windows)     ; NTEmacs
        (shell-pop-set-internal-mode "eshell"))
-      ((eq system-type 'darwin)         ; Mac
-;       (shell-pop-set-internal-mode "ansi-term")
-       (shell-pop-set-internal-mode "eshell")
+      ((is_mac)         ; Mac
+       (shell-pop-set-internal-mode "ansi-term")
+;       (shell-pop-set-internal-mode "eshell")
       ))
 (shell-pop-set-internal-mode-shell "/bin/zsh")
 (shell-pop-set-window-height 60)
