@@ -177,9 +177,7 @@
 (setq jaspace-alternate-jaspace-string "□")
 ;(setq jaspace-alternate-eol-string "↓\n")
 (setq jaspace-highlight-tabs t)
-(setq jaspace-modes
-      (append jaspace-modes
-              '(scheme-mode php-mode yaml-mode js-mode ruby-mode text-mode fundamental-mode LaTeX-mode)))
+(setq jaspace-modes(mapcar 'car my-fav-modes))
 
 ;=======================================================================
 ; キー操作
