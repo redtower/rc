@@ -210,35 +210,8 @@
 ;(global-set-key (kbd "C-'") 'recenter)				; カーソル位置を画面中央に(C-lの代わり)
 
 ;=======================================================================
-; Search
+; カーソル位置の単語を削除(M-d)
 ;=======================================================================
-(defvar last-search-char nil)
-(defvar last-search-direction 'forward)
-(defun search-forward-with-char (char)
-  (interactive "cMove to Char: ")
-  ;; カーソルの文字と等しいときはヒットさせない
-  (if (eq (char-after (point)) char) (forward-char))
-  (and (search-forward (char-to-string char) nil t)
-       (backward-char))
-  (setq last-search-char char
-        last-search-direction 'forward))
-(defun search-backward-with-char (char)
-  (interactive "cMove backward to Char: ")
-  (search-backward (char-to-string char) nil t)
-  (setq last-search-char char
-        last-search-direction 'backward))
-(defun search-repeat-with-char ()
-  (interactive)
-  (cond
-   ((eq nil last-search-char) (message "You haven't searched yet. Stupid!"))
-   ((eq last-search-direction 'forward)
-    (or (search-forward-with-char last-search-char) (backward-char)))
-   ((eq last-search-direction 'backward) (search-backward-with-char last-search-char))))
-;(global-set-key "\C-f" 'search-forward-with-char)
-;(global-set-key "\C-b" 'search-backward-with-char)
-(global-set-key (kbd "C-;") 'search-repeat-with-char)
-(global-set-key "\M-s" 'query-replace-regexp)
-
 (defun kill-word-at-point ()
   (interactive)
   (let ((char (char-to-string (char-after (point)))))
@@ -246,6 +219,7 @@
      ((string= " " char) (delete-horizontal-space))
      ((string-match "[\t\n -@\[-`{-~]" char) (kill-word 1))
      (t (forward-char) (backward-word) (kill-word 1)))))
+(global-set-key "\M-d" 'kill-word-at-point)
 
 ;=======================================================================
 ; fullscreen
