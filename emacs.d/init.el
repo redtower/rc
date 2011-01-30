@@ -121,7 +121,8 @@
     (tool-bar-mode 0)                           ; ツールバー表示なし
     (set-frame-parameter nil 'alpha 90)         ; フレームを透過
 )
-(menu-bar-mode nil)                             ; メニューバー表示なし
+(if (is_mac) (menu-bar-mode 1)                  ; メニューバー表示あり
+             (menu-bar-mode nil))               ; メニューバー表示なし
 (global-font-lock-mode t)                       ; 文字の色つけ
 (setq line-number-mode t)                       ; カーソルのある行番号を表示
 (auto-compression-mode t)                       ; 日本語infoの文字化け防止
@@ -141,8 +142,8 @@
 (setq display-time-string-forms                 ; 時刻の表示フォーマット設定
       '(24-hours ":" minutes))
 (display-time)                                  ; 時刻を表示
-(setq eol-mnemonic-dos "(CRLF)"                 ; 改行コードを表示
-      eol-mnemonic-mac "(CR)"
+(setq eol-mnemonic-dos  "(CRLF)"                ; 改行コードを表示
+      eol-mnemonic-mac  "(CR)"
       eol-mnemonic-unix "(LF)")
 
 ;=======================================================================
