@@ -186,8 +186,8 @@
 (global-unset-key "\C-x\C-u")                         ; C-x C-u が何もしないように変更する
                                                       ;     （undo の typo 時誤動作防止）
 (define-key global-map (kbd "C-5") 'show-paren-mode)  ; 括弧の対応を見るモードを C-5 でトグルする。
-(global-set-key "\M-d" 'kill-word-at-point)
-(global-set-key "\C-z"      'undo)                    ; undo
+(global-set-key "\C-z" 'undo)                         ; undo
+(global-set-key "\M-s" 'query-replace-regexp)         ; 文字列置換
 
 ;=======================================================================
 ; Command-Key and Option-Key Reverse
