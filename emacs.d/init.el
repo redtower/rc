@@ -50,12 +50,13 @@
               "/usr/bin"
               "/usr/local/bin"
               (expand-file-name "~/bin")
-              (expand-file-name "~/.emacs.d/bin")
+              (expand-file-name "~/rc/emacs.d/bin")
+              (expand-file-name "~/.emacs.d/elisp/darkroom-mode")
               ))
  ;; PATH と exec-path に同じ物を追加します
- (when (and (file-exists-p dir) (not (member dir exec-path)))
-   (setenv "PATH" (concat dir ":" (getenv "PATH")))
-   (setq exec-path (append (list dir) exec-path))))
+  (when (and (file-exists-p dir) (not (member dir exec-path)))
+    (setenv "PATH" (concat dir ":" (getenv "PATH")))
+    (setq exec-path (append (list dir) exec-path))))
 
 ;=======================================================================
 ; color-theme
@@ -223,18 +224,6 @@
 (global-set-key "\M-d" 'kill-word-at-point)
 
 ;=======================================================================
-; fullscreen
-;=======================================================================
-(defun toggle-fullscreen ()
-  (interactive)
-  (cond
-   ((is_mac)   (ns-toggle-fullscreen))
-   ((is_linux) (if (frame-parameter nil 'fullscreen)
-                   (set-frame-parameter nil 'fullscreen nil)
-                   (set-frame-parameter nil 'fullscreen 'fullboth)))))
-(global-set-key (kbd "C-c m") 'toggle-fullscreen)
-
-;=======================================================================
 ; auto-install.el
 ;=======================================================================
 (add-to-list 'load-path "~/.emacs.d/elisp/auto-install/")
@@ -266,6 +255,19 @@
 (add-to-list 'load-path "~/.emacs.d/elisp/darkroom-mode/")
 (require 'darkroom-mode)
 (global-set-key "\C-cd" 'darkroom-mode)
+
+;=======================================================================
+; fullscreen
+;=======================================================================
+(defun toggle-fullscreen ()
+  (interactive)
+  (cond
+   ((is_mac)     (ns-toggle-fullscreen))
+   ((is_windows) (w32-fullscreen))
+   ((is_linux)   (if (frame-parameter nil 'fullscreen)
+                     (set-frame-parameter nil 'fullscreen nil)
+                     (set-frame-parameter nil 'fullscreen 'fullboth)))))
+(global-set-key (kbd "C-c m") 'toggle-fullscreen)
 
 ;=======================================================================
 ; コメントアウト
