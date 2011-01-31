@@ -37,6 +37,7 @@
     (org-mode 			. "\\.org$")
     (css-mode 			. "\\.css$")
     (nxml-mode 			. "\\.\\(xml\\|svg\\|wsdl\\|xslt\\|wsdd\\|xsl\\|rng\\|xhtml\\|jsp\\|tag\\)$")
+    (howm-mode 			. "\\.howm$")
     (markdown-mode 		. "\\.\\(md\\|markdown\\)$")))
 
 ;=======================================================================

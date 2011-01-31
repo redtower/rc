@@ -25,3 +25,6 @@
 [submodule "vim/bundle/vim-change-currentdir"]
 	path = vim/bundle/vim-change-currentdir
 	url = https://github.com/redtower/vim-change-currentdir.git
+[submodule "emacs.d/elisp/tumble"]
+	path = emacs.d/elisp/tumble
+	url = git://github.com/febuiles/tumble.git
