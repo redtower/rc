@@ -126,7 +126,6 @@
 (if (is_mac) (menu-bar-mode 1)                  ; メニューバー表示あり
              (menu-bar-mode nil))               ; メニューバー表示なし
 (global-font-lock-mode t)                       ; 文字の色つけ
-(setq line-number-mode t)                       ; カーソルのある行番号を表示
 (auto-compression-mode t)                       ; 日本語infoの文字化け防止
 (setq make-backup-files nil)                    ; バックアップファイルを作らない
 (setq delete-auto-save-files t)                 ; 終了時にオートセーブファイルを消す
