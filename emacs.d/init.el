@@ -104,9 +104,11 @@
       (set-fontset-font
        (frame-parameter nil 'font)
        'japanese-jisx0208
-       '("M+2VM+IPAG circle" . "unicode-bmp")
-       ))
-     ((is_mac)         				 ; Mac
+       '("M+2VM+IPAG circle" . "unicode-bmp"))
+      ; IME変換時フォントの設定（テストバージョンのみ）
+      (setq w32-ime-font-face "MigMix 1M")
+      (setq w32-ime-font-height 22))
+     ((is_mac)                       ; Mac
       (create-fontset-from-ascii-font
        "Menlo-12:weight=normal:slant=normal" nil "menlokakugo")
       (set-fontset-font
