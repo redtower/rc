@@ -10,12 +10,12 @@
 ;=======================================================================
 (load "~/rc/private/emacs.el" :if-does-not-exist nil)
 
-;=======================================================================
-; os check function
-;=======================================================================
-(defun is_windows () (eq system-type 'windows-nt))		; Windows
-(defun is_mac     () (member window-system '(mac ns)))	; Mac
-(defun is_linux   () (eq window-system 'x))				; Linux
+;;=======================================================================
+;; @ os check function
+;;=======================================================================
+(defun is_windows () (eq system-type 'windows-nt))      ; Windows
+(defun is_mac     () (member window-system '(mac ns)))  ; Mac
+(defun is_linux   () (eq window-system 'x))             ; Linux
 
 ;=======================================================================
 ; my-fav-modes
@@ -59,9 +59,29 @@
     (setenv "PATH" (concat dir ":" (getenv "PATH")))
     (setq exec-path (append (list dir) exec-path))))
 
-;=======================================================================
-; color-theme
-;=======================================================================
+;;=======================================================================
+;; @ ime
+;;=======================================================================
+(cond
+ ((is_windows)
+  (setq default-input-method "W32-IME")        ; 標準IMEの設定
+  (setq-default                                ; IME状態のモードライン表示
+   w32-ime-mode-line-state-indicator "[Aa]")
+  (setq
+   w32-ime-mode-line-state-indicator-list '("[Aa]" "[あ]" "[Aa]"))
+  (w32-ime-initialize)                         ; IMEの初期化
+  (setq w32-ime-buffer-switch-p nil))          ; バッファ切り替え時にIME状態を引き継ぐ
+ ((is_mac)
+  (setq default-input-method "japanese")))
+(set-cursor-color "yellow")                     ; IME OFF時の初期カーソルカラー
+(add-hook 'input-method-activate-hook           ; IME ON時のカーソルカラー
+          (lambda() (set-cursor-color "green")))
+(add-hook 'input-method-inactivate-hook         ; IME OFF時のカーソルカラー
+          (lambda() (set-cursor-color "yellow")))
+
+;;=======================================================================
+;; @ color-theme
+;;=======================================================================
 (add-to-list 'load-path "~/.emacs.d/elisp/color-theme/")
 
 (when window-system
@@ -71,9 +91,9 @@
   (color-theme-arjen)        ; Arjen
 )
 
-;=======================================================================
-; font
-;=======================================================================
+;;=======================================================================
+;; @ font
+;;=======================================================================
 (cond
  ((>= 23 emacs-major-version) ; Enacs 23 以降
   (cond
@@ -98,9 +118,9 @@
       (add-to-list 'default-frame-alist '(font . "fontset-menlokakugo"))
       ))))))
 
-;=======================================================================
-; 初期フレーム（initial-frame）、新規フレーム（default-frame）の設定
-;=======================================================================
+;;=======================================================================
+;; @ frame size
+;;=======================================================================
 (when window-system
   (setq initial-frame-alist
         (append
@@ -113,6 +133,12 @@
            (height . 42))   ; フレーム高(文字数)
          default-frame-alist))
 )
+
+;;=======================================================================
+;; @ frame
+;;=======================================================================
+(setq frame-title-format                        ; フレームのタイトル指定
+      (concat "%b - emacs@" system-name " - " system-configuration))
 
 ;=======================================================================
 ; misc
@@ -130,14 +156,11 @@
 (setq make-backup-files nil)                    ; バックアップファイルを作らない
 (setq delete-auto-save-files t)                 ; 終了時にオートセーブファイルを消す
 (load "dired-x")                                ; dired-x （C-x C-j）
-(setq frame-title-format                        ; フレームのタイトル指定
-      (concat "%b - emacs@" system-name))
-(setq inhibit-startup-message t)                ; 起動時のメッセージを抑止する
 (fset 'yes-or-no-p 'y-or-n-p)                   ; "yes or no"を"y or n"に
 
-;=======================================================================
-; モード行の表示
-;=======================================================================
+;;=======================================================================
+;; @ modeilne
+;;=======================================================================
 (line-number-mode t)                            ; 行番号を表示
 (column-number-mode t)                          ; 桁番号を表示
 (setq display-time-string-forms                 ; 時刻の表示フォーマット設定
@@ -147,19 +170,30 @@
       eol-mnemonic-mac  "(CR)"
       eol-mnemonic-unix "(LF)")
 
-;=======================================================================
-; スクロール
-;=======================================================================
-(setq scroll-conservatively 35					; 1行ずつスクロール
+;;=======================================================================
+;; @ cursor
+;;=======================================================================
+(blink-cursor-mode 0)                           ; カーソル点滅表示
+(setq scroll-preserve-screen-position t)        ; スクロール時のカーソル位置の維持
+(setq vertical-centering-font-regexp ".*"       ; 1行ずつスクロール
+      scroll-conservatively 35
       scroll-margin 0
       scroll-step 1)
+
+(setq next-screen-context-lines 1)              ; 画面スクロール時の重複行数
 (setq comint-scroll-show-maximum-output t)      ; for shell-mode
 
-;=======================================================================
-; バックアップファイルの作成、自動保存
-;=======================================================================
+;;=======================================================================
+;; @ default setting
+;;=======================================================================
+(setq inhibit-startup-message t)                ; 起動時のメッセージを抑止する
+(setq inhibit-startup-echo-area-message -1)     ; スタートアップ時のエコー領域メッセージの非表示
+
+;;=======================================================================
+;; @ backup
+;;=======================================================================
 (setq make-backup-files nil)                    ; バックアップファイルを作らない
-(setq auto-save-default nil)					; 自動保存しない
+(setq auto-save-default nil)                    ; 自動保存しない
 (setq auto-save-mode nil)                       ; 自動保存しない
 
 ;=======================================================================
@@ -181,19 +215,20 @@
 (setq jaspace-highlight-tabs t)
 (setq jaspace-modes(mapcar 'car my-fav-modes))
 
-;=======================================================================
-; キー操作
-;=======================================================================
+;;=======================================================================
+;; @ key bind
+;;=======================================================================
 (global-set-key   "\C-c\C-e" 'eval-current-buffer)    ; .emacs再読込
 (global-unset-key "\C-x\C-u")                         ; C-x C-u が何もしないように変更する
                                                       ;     （undo の typo 時誤動作防止）
 (define-key global-map (kbd "C-5") 'show-paren-mode)  ; 括弧の対応を見るモードを C-5 でトグルする。
 (global-set-key "\C-z" 'undo)                         ; undo
 (global-set-key "\M-s" 'query-replace-regexp)         ; 文字列置換
+(global-set-key "\C-m" 'reindent-then-newline-and-indent) ; 改行キーでオートインデント
 
-;=======================================================================
-; Command-Key and Option-Key Reverse
-;=======================================================================
+;;=======================================================================
+;; @ Command-Key and Option-Key Reverse
+;;=======================================================================
 (when (is_mac)
   (setq ns-command-modifier        'meta)
   (setq ns-alternate-modifier      'super)
@@ -506,13 +541,13 @@
 (global-set-key "\C-t"     'shell-pop)
 
 (cond ((is_windows)     ; NTEmacs
-       (shell-pop-set-internal-mode "eshell"))
-       (shell-pop-set-internal-mode-shell "bash")
+       (shell-pop-set-internal-mode "eshell")
+       (shell-pop-set-internal-mode-shell "bash"))
       ((is_mac)         ; Mac
        (shell-pop-set-internal-mode "ansi-term")
 ;       (shell-pop-set-internal-mode "eshell")
-       (shell-pop-set-internal-mode-shell "/bin/zsh")
-      ))
+       (shell-pop-set-internal-mode-shell "/bin/zsh"))
+      )
 
 (shell-pop-set-window-height 60)
 
@@ -591,3 +626,4 @@
 ; ホームディレクトリに移動する
 ;=======================================================================
 (cd "~")
+
