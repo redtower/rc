@@ -14,10 +14,10 @@
 (defvar darkroom-mode-face-foreground "NavajoWhite"
   "The foreground color of the default face")
 
-(defvar darkroom-mode-left-margin 30
+(defvar darkroom-mode-left-margin 50
   "Margin to add to the left side of the screen, depends on your resolution and prefered column width")
 
-(defvar darkroom-mode-right-margin 30
+(defvar darkroom-mode-right-margin 50
   "Margin to add to the right side of the screen, depends on your resolution and prefered column width")
 
 (defvar darkroom-mode-enable-multi-monitor-support t
