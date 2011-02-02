@@ -226,7 +226,7 @@
 (define-key global-map (kbd "C-5") 'show-paren-mode)  ; 括弧の対応を見るモードを C-5 でトグルする。
 (global-set-key "\C-z" 'undo)                         ; undo
 (global-set-key "\M-s" 'query-replace-regexp)         ; 文字列置換
-(global-set-key "\C-m" 'reindent-then-newline-and-indent) ; 改行キーでオートインデント
+;(global-set-key "\C-m" 'reindent-then-newline-and-indent) ; 改行キーでオートインデント
 
 ;;=======================================================================
 ;; @ Command-Key and Option-Key Reverse
@@ -572,7 +572,7 @@
 (autoload 'markdown-mode "markdown-mode.el"
    "Major mode for editing Markdown files" t)
 (setq auto-mode-alist
-   (cons '("\\.md" . markdown-mode) auto-mode-alist))
+   (cons '("\\.\\(md\\|markdown\\)" . markdown-mode) auto-mode-alist))
 
 ;=======================================================================
 ; 動的略語補完 dabbrev-ja
@@ -635,6 +635,32 @@
 ;=======================================================================
 (add-to-list 'load-path "~/.emacs.d/elisp/tumble/")
 (require 'tumble)
+
+;;=======================================================================
+;; @ color-moccur
+;;=======================================================================
+(add-to-list 'load-path "~/.emacs.d/elisp/color-moccur/")
+(require 'color-moccur)
+
+;;=======================================================================
+;; @ moccur-edit
+;;=======================================================================
+(add-to-list 'load-path "~/.emacs.d/elisp/moccur-edit/")
+(require 'moccur-edit)
+
+;;=======================================================================
+;; @ yasnippet
+;;=======================================================================
+(add-to-list 'load-path "~/.emacs.d/elisp/yasnippet/")
+(require 'yasnippet)
+(yas/initialize)
+(yas/load-directory "~/.emacs.d/elisp/yasnippet/snippets")
+
+;;=======================================================================
+;; @ navi2ch
+;;=======================================================================
+(add-to-list 'load-path "~/.emacs.d/elisp/navi2ch/")
+(autoload 'navi2ch "navi2ch" "Navigator for 2ch for Emacs" t)
 
 ;=======================================================================
 ; ホームディレクトリに移動する
