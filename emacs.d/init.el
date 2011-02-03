@@ -364,7 +364,7 @@
 ;;=======================================================================
 ;; 分割したウィンドウ間を移動
 (define-prefix-command 'windmove-map)
-(global-set-key (kbd "C-c q") 'windmove-map)
+(global-set-key (kbd "C-o") 'windmove-map)
 (define-key windmove-map "h" 'windmove-left)
 (define-key windmove-map "j" 'windmove-down)
 (define-key windmove-map "k" 'windmove-up)
