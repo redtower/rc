@@ -290,10 +290,12 @@
 ;;=======================================================================
 ;; @ fringe
 ;;=======================================================================
-(global-linum-mode t)                          ; バッファ中の行番号表示
-(set-face-attribute                            ; 行番号のフォーマット
- 'linum nil :foreground "red" :height 0.8)
-(setq linum-format "%4d")
+;(add-to-list 'load-path "~/.emacs.d/elisp/linum/")
+;(require 'linum)
+;(global-linum-mode t)                          ; バッファ中の行番号表示
+;(set-face-attribute                            ; 行番号のフォーマット
+; 'linum nil :foreground "red" :height 0.8)
+;(setq linum-format "%4d")
 
 ;;=======================================================================
 ;; @ Darkroom-mode
@@ -302,7 +304,7 @@
 (require 'darkroom-mode)
 (defun toggle-darkroom ()
   (interactive)
-  (global-linum-mode nil)
+;  (global-linum-mode nil)
   (darkroom-mode))
 (global-set-key (kbd "C-c d") 'toggle-darkroom)
 
@@ -335,17 +337,10 @@
     44  48  52  56  60  64  68  72  76  80
     84  88  92  96 100 104 108 112 116 120))
 
-;=======================================================================
-; 行番号表示
-;=======================================================================
-;(add-to-list 'load-path "~/.emacs.d/elisp/linum/")
-;(require 'linum)
-;(global-linum-mode)
-
-;=======================================================================
-; クリップボードと共有する
-;       ref. http://d.hatena.ne.jp/x68kace/20080317/p3
-;=======================================================================
+;;=======================================================================
+;; @ クリップボードと共有する
+;;   ref. http://d.hatena.ne.jp/x68kace/20080317/p3
+;;=======================================================================
 (global-unset-key "\C-y")
 (global-set-key   "\C-y" 'clipboard-yank)
 (global-unset-key "\C-w")
