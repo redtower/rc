@@ -659,7 +659,7 @@
 ;;=======================================================================
 ;; @ navi2ch
 ;;=======================================================================
-(add-to-list 'load-path "~/.emacs.d/elisp/navi2ch/")
+(add-to-list 'load-path "~/.emacs.d/elisp/navi2ch/share/emacs/site-lisp/")
 (autoload 'navi2ch "navi2ch" "Navigator for 2ch for Emacs" t)
 
 ;=======================================================================
