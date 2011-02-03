@@ -664,7 +664,16 @@
 ;;=======================================================================
 (add-to-list 'load-path "~/.emacs.d/elisp/emacs-w3m/share/emacs/site-lisp/w3m/")
 (require 'w3m-load)
-(setq browse-url-browser-function 'w3m-browse-url)  ; ブラウザをw3mにする
+;(setq browse-url-browser-function 'w3m-browse-url)  ; ブラウザをw3mにする
+(setq browse-url-browser-function 'browse-url-generic
+      browse-url-generic-program "/Applications/Firefox.app/Contents/MacOS/firefox-bin")
+(defun choose-browser (url &rest args)
+  (interactive "sURL: ")
+  (if (y-or-n-p "Use external browser? ")
+      (browse-url-generic url)
+;      (browse-url-firefox url)
+    (w3m-browse-url url)))
+(setq browse-url-browser-function 'choose-browser)
 (global-set-key "\C-xm" 'browse-url-at-point)       ; カーソル位置の文字列をURLとしてブラザを起動する
 
 ;;=======================================================================
