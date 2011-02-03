@@ -386,7 +386,11 @@
       (split-window-vertically)
     (split-window-horizontally)))
 (define-key windmove-map "s" 'split-window-conditional)
-(define-key windmove-map "n" (lambda () (interactive) (split-window-conditional) (switch-to-buffer "*scratch*")))
+(define-key windmove-map "n"
+  (lambda ()
+    (interactive)
+    (split-window-conditional)
+    (switch-to-buffer "*scratch*")))
 
 ;;=======================================================================
 ;; @ C-c C-c ： 現バッファの内容を保存してバッファを消す
