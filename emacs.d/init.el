@@ -55,6 +55,11 @@
     (setq exec-path (append (list dir) exec-path))))
 
 ;;=======================================================================
+;; @ info
+;;=======================================================================
+(require 'info)
+
+;;=======================================================================
 ;; @ ime
 ;;=======================================================================
 (cond
@@ -682,14 +687,20 @@
 ;;=======================================================================
 ;; @ navi2ch
 ;;=======================================================================
-(add-to-list 'load-path "~/.emacs.d/elisp/navi2ch/share/emacs/site-lisp/")
+(add-to-list 'load-path                             ; loadパスの追加
+             "~/.emacs.d/elisp/navi2ch/share/emacs/site-lisp/")
+(add-to-list 'Info-additional-directory-list        ; infoパスの追加
+             "~/.emacs.d/elisp/navi2ch/share/info")
 (autoload 'navi2ch "navi2ch" "Navigator for 2ch for Emacs" t)
 (setq navi2ch-article-auto-range nil)               ; 最初に全件表示する(デフォルトは100)
 
 ;;=======================================================================
 ;; @ emacs-w3m
 ;;=======================================================================
-(add-to-list 'load-path "~/.emacs.d/elisp/emacs-w3m/share/emacs/site-lisp/w3m/")
+(add-to-list 'load-path                             ; loadパスの追加
+             "~/.emacs.d/elisp/emacs-w3m/share/emacs/site-lisp/w3m/")
+(add-to-list 'Info-additional-directory-list        ; infoパスの追加
+             "~/.emacs.d/elisp/emacs-w3m/share/info")
 (require 'w3m-load)
 (defun browse-url-default-macosx-browser (url &optional new-window)
   (interactive (browse-url-interactive-arg "URL: "))
