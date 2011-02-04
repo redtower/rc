@@ -16,24 +16,26 @@
 ; my-fav-modes
 ;=======================================================================
 (defvar my-fav-modes
-  '((emacs-lisp-mode 	. "\\.el$")
-    (common-lisp-mode 	. "\\.\\(cl\\|lisp\\)$")
-    (scheme-mode 		. "\\.scm$")
-    (clojure-mode 		. "\\.clj$")
-    (pir-mode 			. "\\.\\(imc\\|pir\\)$")
-    (malabar-mode 		. "\\.java$")
-    (php-mode 			. "\\.php[45]?$")
-    (yaml-mode 			. "\\.ya?ml$")
-    (js2-mode 			. "\\.js$")
-    (ruby-mode 			. "\\.rb$")
-    (text-mode 			. "\\.txt$")
-    (fundamental-mode 	. nil)
-    (LaTeX-mode 		. "\\.tex$")
-    (org-mode 			. "\\.org$")
-    (css-mode 			. "\\.css$")
-    (nxml-mode 			. "\\.\\(xml\\|svg\\|wsdl\\|xslt\\|wsdd\\|xsl\\|rng\\|xhtml\\|jsp\\|tag\\)$")
-    (howm-mode 			. "\\.howm$")
-    (markdown-mode 		. "\\.\\(md\\|markdown\\)$")))
+  '((emacs-lisp-mode    . "\\.el$")
+    (common-lisp-mode   . "\\.\\(cl\\|lisp\\)$")
+    (scheme-mode        . "\\.scm$")
+    (clojure-mode       . "\\.clj$")
+    (pir-mode           . "\\.\\(imc\\|pir\\)$")
+    (malabar-mode       . "\\.java$")
+    (php-mode           . "\\.php[45]?$")
+    (yaml-mode          . "\\.ya?ml$")
+    (js2-mode           . "\\.js$")
+    (ruby-mode          . "\\.rb$")
+    (text-mode          . "\\.txt$")
+    (fundamental-mode   . nil)
+    (LaTeX-mode         . "\\.tex$")
+    (org-mode           . "\\.org$")
+    (css-mode           . "\\.css$")
+    (nxml-mode          . "\\.\\(xml\\|svg\\|wsdl\\|xslt\\|wsdd\\|xsl\\|rng\\|xhtml\\|jsp\\|tag\\)$")
+    (howm-mode          . "\\.howm$")
+    (markdown-mode      . "\\.\\(md\\|markdown\\)$")
+    (csharp-mode        . "\\.cs$")
+))
 
 ;=======================================================================
 ; path
@@ -241,13 +243,13 @@
 ;; @ Move Cursor
 ;;=======================================================================
 (global-set-key "\C-h"      'backward-delete-char)  ; C-h でバックスペース
-;(global-set-key "\C-h"      'backward-char)        ; ←
-;(global-set-key "\C-j"      'next-line)			; ↓
-;(global-set-key "\C-k"      'previous-line)		; ↑
-;(global-set-key "\C-l"      'forward-char)			; →
-;(global-set-key "\C-n"      'newline-and-indent)   ; 改行してインデント
-;(global-set-key "\C-o"      'kill-line)			; 行削除(C-kの代わり)
-;(global-set-key (kbd "C-'") 'recenter)				; カーソル位置を画面中央に(C-lの代わり)
+;(global-set-key "\C-h"      'backward-char)         ; ←
+;(global-set-key "\C-j"      'next-line)             ; ↓
+;(global-set-key "\C-k"      'previous-line)         ; ↑
+;(global-set-key "\C-l"      'forward-char)          ; →
+;(global-set-key "\C-n"      'newline-and-indent)    ; 改行してインデント
+;(global-set-key "\C-o"      'kill-line)             ; 行削除(C-kの代わり)
+;(global-set-key (kbd "C-'") 'recenter)              ; カーソル位置を画面中央に(C-lの代わり)
 
 ;;=======================================================================
 ;; @ カーソル位置の単語を削除(M-d)
@@ -830,6 +832,28 @@
 ;(require 'calfw-ical)
 ;(cfw:install-ical-schedules)
 ;;(setq cfw:ical-calendar-contents-sources '("http://www.google.com/calendar/ical/～.ics"))
+
+;;=======================================================================
+;; @ csharp-mode（c#）
+;;=======================================================================
+(add-to-list 'load-path "~/.emacs.d/elisp/csharp-mode")
+(autoload 'csharp-mode "csharp-mode" "Major mode for editing C# code." t)
+(setq auto-mode-alist
+      (cons '("\\.cs$" . csharp-mode) auto-mode-alist))
+
+;; Patterns for finding Microsoft C# compiler error messages:
+(require 'compile)
+(push '("^\\(.*\\)(\\([0-9]+\\),\\([0-9]+\\)): error"   1 2 3 2) compilation-error-regexp-alist)
+(push '("^\\(.*\\)(\\([0-9]+\\),\\([0-9]+\\)): warning" 1 2 3 1) compilation-error-regexp-alist)
+
+;; Patterns for defining blocks to hide/show:
+(push '(csharp-mode
+        "\\(^\\s *#\\s *region\\b\\)\\|{"
+        "\\(^\\s *#\\s *endregion\\b\\)\\|}"
+        "/[*/]"
+        nil
+        hs-c-like-adjust-block-beginning)
+      hs-special-modes-alist)
 
 ;=======================================================================
 ; load private-emacs.el
