@@ -702,18 +702,26 @@
 (add-to-list 'Info-additional-directory-list        ; infoパスの追加
              "~/.emacs.d/elisp/emacs-w3m/share/info")
 (require 'w3m-load)
+
 (defun browse-url-default-macosx-browser (url &optional new-window)
   (interactive (browse-url-interactive-arg "URL: "))
   (if (and new-window (>= emacs-major-version 23))
       (ns-do-applescript
-       (format (concat "tell application \"Safari\" to make document with properties {URL:\"%s\"}\n"
-		       "tell application \"Safari\" to activate") url))
+       (format
+        (concat "tell application \"Safari\" to make document with properties {URL:\"%s\"}\n"
+                "tell application \"Safari\" to activate") url))
     (start-process (concat "open " url) nil "open" url)))
+
+(setq browse-url-browser-function 'browse-url-generic
+      browse-url-generic-program
+      (w32-short-file-name "C:/Program Files/Mozilla Firefox/firefox.exe")) 
 
 (defun choose-browser (url &rest args)
   (interactive "sURL: ")
   (if (y-or-n-p "Use external browser? ")
-      (browse-url-default-macosx-browser url)
+      (cond
+       ((is_mac)     (browse-url-default-macosx-browser url))
+       ((is_windows) (browse-url-generic url)))
       (w3m-browse-url url)))
 (setq browse-url-browser-function 'choose-browser)
 (global-set-key "\C-xm" 'browse-url-at-point)       ; カーソル位置の文字列をURLとしてブラザを起動する
