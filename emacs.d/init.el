@@ -714,9 +714,10 @@
                 "tell application \"Safari\" to activate") url))
     (start-process (concat "open " url) nil "open" url)))
 
-(setq browse-url-browser-function 'browse-url-generic
+(if (is_windows)
+    (setq browse-url-browser-function 'browse-url-generic
       browse-url-generic-program
-      (w32-short-file-name "C:/Program Files/Mozilla Firefox/firefox.exe")) 
+      (w32-short-file-name "C:/Program Files/Mozilla Firefox/firefox.exe")) )
 
 (defun choose-browser (url &rest args)
   (interactive "sURL: ")
