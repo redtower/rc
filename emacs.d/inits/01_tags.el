@@ -11,7 +11,6 @@
 ;;=======================================================================
 ;; @ GNU GLOBAL（gtags）
 ;;=======================================================================
-(add-to-list 'load-path "~/.emacs.d/elisp/gtags/")
 (autoload 'gtags-mode "gtags" "" t)
 (setq gtags-mode-hook
       '(lambda ()

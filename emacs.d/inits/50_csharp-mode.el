@@ -1,7 +1,6 @@
 ;;=======================================================================
 ;; @ csharp-mode（c#）
 ;;=======================================================================
-(add-to-list 'load-path "~/.emacs.d/elisp/csharp-mode")
 (autoload 'csharp-mode "csharp-mode" "Major mode for editing C# code." t)
 (setq auto-mode-alist
       (cons '("\\.cs$" . csharp-mode) auto-mode-alist))

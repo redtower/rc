@@ -1,7 +1,6 @@
 ;;=======================================================================
 ;; @ Darkroom-mode
 ;;=======================================================================
-(add-to-list 'load-path "~/.emacs.d/elisp/darkroom-mode/")
 (require 'darkroom-mode)
 (defun toggle-darkroom ()
   (interactive)

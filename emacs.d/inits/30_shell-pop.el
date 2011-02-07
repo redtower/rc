@@ -1,7 +1,6 @@
 ;;=======================================================================
 ;; @ shell-pop
 ;;=======================================================================
-(add-to-list 'load-path "~/.emacs.d/elisp/shell-pop/")
 (require 'shell-pop)
 (global-set-key [f8]       'shell-pop)
 (global-set-key "\C-c\C-o" 'shell-pop)

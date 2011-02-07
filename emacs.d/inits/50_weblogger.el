@@ -1,7 +1,6 @@
 ;;=======================================================================
 ;; @ wp-emacs（weblogger）
 ;;=======================================================================
-(add-to-list 'load-path "~/.emacs.d/elisp/wp-emacs/")
 (require 'weblogger)
 (global-set-key "\C-c\C-w" 'weblogger-start-entry)  ; weblogger起動（C-c C-w）
 

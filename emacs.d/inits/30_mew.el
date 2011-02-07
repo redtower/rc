@@ -3,7 +3,6 @@
 ;;=======================================================================
 (cond
  ((is_windows)
-  (add-to-list 'load-path "~/.emacs.d/elisp/mew")
   (autoload 'mew "mew" nil t)
   (autoload 'mew-send "mew" nil t)
 

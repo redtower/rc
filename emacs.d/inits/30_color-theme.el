@@ -1,8 +1,6 @@
 ;;=======================================================================
 ;; @ color-theme
 ;;=======================================================================
-(add-to-list 'load-path "~/.emacs.d/elisp/color-theme/")
-
 (when window-system
   (require 'color-theme)
   (color-theme-initialize)
