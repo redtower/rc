@@ -1,0 +1,17 @@
+			   smew in Haskell
+
+* Installation
+
+- Install GHC (Glasgow Haskell Compiler)
+	http://haskell.org/ghc/
+
+- Install the "cabal" command whose package name is cabal-install
+	http://hackage.haskell.org/trac/hackage/wiki/CabalInstall
+
+- Compile
+
+    % cabal configure
+    % cabal install
+
+  "smew" will be installed to "~/.cabal/bin".
+  Note that this may displays warnings. Please ignore them.

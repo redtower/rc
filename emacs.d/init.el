@@ -49,6 +49,7 @@
               "/usr/local/bin"
               (expand-file-name "~/bin")
               (expand-file-name "~/.emacs.d/elisp/darkroom-mode")
+              (expand-file-name "~/.emacs.d/elisp/mew/bin")
               (expand-file-name "~/rc/emacs.d/bin")
               ))
  ;; PATH と exec-path に同じ物を追加します

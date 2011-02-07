@@ -1,0 +1,37 @@
+Mew 6.3.50 (2010/08/31)
+
+* Defining mew-draft-use-format-flowed.
+	Christophe TROESTLER <Christophe.Troestler>
+* Making use of mew-save-dir.
+* Fixing the hash-vs-array problem of cmew.
+	Masamichi HOSODA <trueroad>
+* Making cmew safer in the case where mewest works at the same time.
+	Masamichi HOSODA <trueroad>
+* Hack for mew-time-rfc-to-sortkey.
+	Hideyuki SHIRAI <shirai>
+* A patch for unzip.
+	Yu-ji Hosokawa <yu-ji>
+* Supporting unzip.
+* Bug fix for PGP/MIME of binary encryption.
+	Shoichi Kurosaka <sho>
+* Both cmew and smew in Haskell works well finally!
+	Shuichi KITAGUCHI <kit>
+* Fixing info/Makefile.
+	Yasuhiro KIMURA <yasu>
+* Guarding mew-addrbook-clean-up.
+	Hideyuki SHIRAI <shirai>
+* A bug fix of mew-mime-content-type.
+	Yu-ji Hosokawa <yu-ji>
+* Setting split-width-threshold to nil in mew-summary-reply.
+* "b" in Summary saves the buffer of Message mode to a file.
+* header-only now can work for M-x mew.
+* Bold of font can be specified on Emacs 23.
+* Deleting " " from global-mode-string.
+	Christophe TROESTLER <Christophe.Troestler>
+* Correcting the -P option of stunnel3.
+	Kendall Shaw <kshaw>
+* Define mew-sumsym-encode-folder and mew-sumsym-decode-folder.
+* set-buffer -> with-current-buffer.
+* Making mew-mime-image() safer.
+	Hideyuki SHIRAI <shirai>
+
