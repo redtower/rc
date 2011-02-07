@@ -154,8 +154,9 @@
     (tool-bar-mode 0)                           ; ツールバー表示なし
     (set-frame-parameter nil 'alpha 90)         ; フレームを透過
 )
-(if (is_mac) (menu-bar-mode 1)                  ; メニューバー表示あり
-             (menu-bar-mode nil))               ; メニューバー表示なし
+(cond ((is_mac)     (menu-bar-mode t))          ; メニューバー表示あり
+      ((is_windows) (menu-bar-mode t))          ; メニューバー表示あり
+      (t            (menu-bar-mode nil)))       ; メニューバー表示なし
 (global-font-lock-mode t)                       ; 文字の色つけ
 (auto-compression-mode t)                       ; 日本語infoの文字化け防止
 (setq make-backup-files nil)                    ; バックアップファイルを作らない
@@ -438,6 +439,10 @@
       "^\\(\\([a-zA-Z]:/\\)?[^:]*\\.howm\\):\\([0-9]*\\):\\(.*\\)$")
 (setq howm-excluded-file-regexp                 ; 検索しないファイルの正規表現
       "/\\.#\\|[~#]$\\|\\.bak$\\|/CVS/\\|\\.doc$\\|\\.pdf$\\|\\.ppt$\\|\\.xls$")
+
+;;=======================================================================
+;; @ 保存時にファイルサイズが 0 なら削除（howm の時）
+;;=======================================================================
 ; いちいち消すのも面倒なので内容が 0 ならファイルごと削除する
 (if (not (memq 'delete-file-if-no-contents after-save-hook))
     (setq after-save-hook
