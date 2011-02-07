@@ -1,8 +1,6 @@
 ;;=======================================================================
 ;; @ emacs-w3m
 ;;=======================================================================
-(add-to-list 'load-path                             ; loadパスの追加
-             "~/.emacs.d/elisp/emacs-w3m/share/emacs/site-lisp/w3m/")
 (add-to-list 'Info-additional-directory-list        ; infoパスの追加
              "~/.emacs.d/elisp/emacs-w3m/share/info")
 (require 'w3m-load)

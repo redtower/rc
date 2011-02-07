@@ -2,7 +2,6 @@
 ;; @ calfw.el
 ;;   ref. http://d.hatena.ne.jp/kiwanami/?20110107215552
 ;;=======================================================================
-(add-to-list 'load-path "~/.emacs.d/elisp/calfw")
 (require 'calfw)
 (global-set-key "\C-cl"  'cfw:open-calendar-buffer)
 (defvar my-howm-schedule-page "2011年予定") ; 予定を入れるメモのタイトル
