@@ -1,4 +1,12 @@
 ;;=======================================================================
+;; @ server
+;;=======================================================================
+(require 'server)
+;(unless (server-running-p) (server-start))     ; サーバが動作していなければserver-start
+(if (server-running-p) (server-force-delete))   ; サーバが動作していれば停止してserver-start
+(server-start)
+
+;;=======================================================================
 ;; @ os check function
 ;;=======================================================================
 (defun is_windows () (eq system-type 'windows-nt))      ; Windows
