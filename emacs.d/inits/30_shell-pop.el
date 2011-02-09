@@ -4,7 +4,6 @@
 (require 'shell-pop)
 (global-set-key [f8]       'shell-pop)
 (global-set-key "\C-c\C-o" 'shell-pop)
-(global-set-key "\C-t"     'shell-pop)
 
 (cond ((is_windows)     ; NTEmacs
        (shell-pop-set-internal-mode "eshell")
