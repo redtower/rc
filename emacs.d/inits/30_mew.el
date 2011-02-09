@@ -8,6 +8,7 @@
 
   ;; Optional setup (Read Mail menu):
   (setq read-mail-command 'mew)
+  (setq mew-use-unread-mark t)          ; 未読マーク（U）をつける
 
   ;; Optional setup (e.g. C-xm for sending a message):
   (autoload 'mew-user-agent-compose "mew" nil t)
