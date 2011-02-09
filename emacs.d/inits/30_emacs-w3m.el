@@ -5,6 +5,9 @@
              "~/.emacs.d/elisp/emacs-w3m/share/info")
 (require 'w3m-load)
 
+;;=======================================================================
+;; @ 外部ブラウザの起動（C-x m）
+;;=======================================================================
 (defun browse-url-default-macosx-browser (url &optional new-window)
   (interactive (browse-url-interactive-arg "URL: "))
   (if (and new-window (>= emacs-major-version 23))
@@ -19,15 +22,33 @@
       browse-url-generic-program
       (w32-short-file-name "C:/Program Files/Mozilla Firefox/firefox.exe")) )
 
-(defun choose-browser (url &rest args)
+(defun my-external-browser (url &rest args) ; 外部ブラウザ
+  (cond
+   ((is_mac)     (browse-url-default-macosx-browser url))
+   ((is_windows) (browse-url-generic url))))
+
+(defun choose-browser (url &rest args)      ; ブラウザ選択
   (interactive "sURL: ")
   (if (y-or-n-p "Use external browser? ")
-      (cond
-       ((is_mac)     (browse-url-default-macosx-browser url))
-       ((is_windows) (browse-url-generic url)))
-      (w3m-browse-url url)))
-(setq browse-url-browser-function 'choose-browser)
-(global-set-key "\C-xm" 'browse-url-at-point)       ; カーソル位置の文字列をURLとしてブラザを起動する
+      (my-external-browser url)             ; 外部ブラウザ
+      (w3m-browse-url url)))                ; emacs-w3m
+
+(setq browse-url-dhtml-url-list             ; Emacs-w3m で見られない URL のブラックリスト
+      '("http://www.google.com/reader"
+        "http://www.google.co.jp/reader"
+        "http://maps.google.co.jp"
+        "http://map.yahoo.co.jp"
+        "http://map.labs.goo.ne.jp"
+        "http://www.haloscan.com"
+        "http://sitemeter.com"
+        "http://www.hmv.co.jp"
+))
+
+(setq browse-url-browser-function           ; ブラックリストにマッチしたら外部ブラウザ
+      `((,(concat "^" (regexp-opt browse-url-dhtml-url-list)) . my-external-browser)
+        ("." . choose-browser)))
+
+(global-set-key "\C-xm" 'browse-url-at-point)   ; カーソル位置の文字列をURLとしてブラザを起動する
 
 ;;=======================================================================
 ;; @ ttp で始まる URL を http として認識させる。
@@ -63,4 +84,3 @@
 (defadvice browse-url (before support-omitted-h (url &rest args) activate)
   (when (and url (string-match "\\`ttps?://" url))
     (setq url (concat "h" url))))
-
