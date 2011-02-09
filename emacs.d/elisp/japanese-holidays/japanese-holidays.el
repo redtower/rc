@@ -299,27 +299,29 @@ See the documentation for `calendar-holidays' for details."
   "*List of days of week to be marked as holiday.")
 
 (defvar calendar-weekend-marker nil)
+(defvar calendar-sunday-marker nil)
+(defvar calendar-saturday-marker nil)
 
 (defun calendar-mark-weekend ()
   (let ((m displayed-month)
 	(y displayed-year))
     (increment-calendar-month m y -1)
-    (calendar-for-loop
+    (calendar-for-loop 
      i from 1 to 3 do
      (let ((sunday (- 1 (calendar-day-of-week (list m 1 y))))
 	   (last (calendar-last-day-of-month m y)))
        (while (<= sunday last)
-	 (mapcar (lambda (x)
-		   (let ((d (+ sunday x)))
-		     (and (<= 1 d)
-			  (<= d last)
-			  (mark-visible-calendar-date
-			   (list m d y)
-			   calendar-weekend-marker))))
+	 (mapcar (function
+		  (lambda (x)
+		    (let ((d (+ sunday x))) 
+		      (and (<= 1 d)
+			   (<= d last)
+			   (mark-visible-calendar-date (list m d y) (if (eq x 0)
+									calendar-sunday-marker
+								      calendar-saturday-marker))))))
 		 calendar-weekend)
 	 (setq sunday (+ sunday 7))))
      (increment-calendar-month m y 1))))
-
 
 (provide 'japanese-holidays)
 
