@@ -19,11 +19,15 @@
 ;                 delete-window) after
 ;  (balance-windows)
 ;  (other-window 1))
+
+;; Windowを分割した時にバランスを見て上下分割、左右分割を決める
 (defun split-window-conditional ()
   (interactive)
   (if (> (* (window-height) 2) (window-width))
       (split-window-vertically)
     (split-window-horizontally)))
+
+;; Window分割（C-o s）（C-o n）
 (define-key windmove-map "s" 'split-window-conditional)
 (define-key windmove-map "n"
   (lambda ()
@@ -31,3 +35,6 @@
     (split-window-conditional)
     (switch-to-buffer "*scratch*")))
 
+;; Windowを閉じる（C-0）自画面、（C-1）自画面以外
+(define-key global-map (kbd "C-0") 'delete-window)
+(define-key global-map (kbd "C-1") 'delete-other-windows)
