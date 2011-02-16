@@ -29,6 +29,9 @@
 (add-to-list 'load-path "~/.emacs.d/elisp/wp-emacs")
 (add-to-list 'load-path "~/.emacs.d/elisp/linum")
 (add-to-list 'load-path "~/.emacs.d/elisp/jaspace")
+(add-to-list 'load-path "~/.emacs.d/elisp/imcap")
+(add-to-list 'load-path "~/.emacs.d/elisp/window-layout")
+(add-to-list 'load-path "~/.emacs.d/elisp/e2wm")
 
 ;;=======================================================================
 ;; @ init-loader
