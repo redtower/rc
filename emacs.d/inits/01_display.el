@@ -52,7 +52,9 @@
     (mouse-wheel-mode t)                        ; ホイールマウス（あり）
     (set-scroll-bar-mode 'right)                ; スクロールバーを右に表示
     (tool-bar-mode 0)                           ; ツールバー表示なし
-    (set-frame-parameter nil 'alpha 90)         ; フレームを透過
+    (cond
+     ((is_mac)
+      (set-frame-parameter nil 'alpha 90)))     ; フレームを透過
 )
 (cond ((is_mac)     (menu-bar-mode t))          ; メニューバー表示あり
       ((is_windows) (menu-bar-mode t))          ; メニューバー表示あり
