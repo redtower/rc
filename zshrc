@@ -18,6 +18,11 @@ function is_cygwin(){
     [[ $OSTYPE == cygwin ]] && return 0
     return 1
 }
+## Emacs
+function is_emacs(){
+    [[ "$EMACS" != "" ]] && return 0
+    return 1
+}
 
 # ヒストリの設定
 HISTFILE=~/.histfile
