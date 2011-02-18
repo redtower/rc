@@ -1,0 +1,4 @@
+# -*- mode: snippet -*-
+# name: [cc_bash]...[/cc_bash]
+# --
+[cc_bash]$0[/cc_bash]
