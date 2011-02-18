@@ -4,9 +4,10 @@
 (require 'yasnippet)
 
 ;;(setq yas/trigger-key "SPC")
-(setq yas/trigger-key nil)
-(setq yas/next-field-key "TAB")
-(setq yas/prev-field-key "<S-tab>")
+(setq yas/trigger-key "TAB")
+;;(setq yas/trigger-key nil)
+;;(setq yas/next-field-key "TAB")
+;;(setq yas/prev-field-key "<S-tab>")
 
 (define-key yas/minor-mode-map (kbd "C-x i i") 'yas/insert-snippet)
 (define-key yas/minor-mode-map (kbd "C-x i f") 'yas/find-snippets)
