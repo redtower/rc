@@ -21,13 +21,12 @@
              ;; 必要ないキーバインドを除去
              ;; (define-key weblogger-entry-mode-map (kbd "C-c C-k") nil)
              (define-key weblogger-entry-mode-map (kbd "C-x C-s") nil)
-             ;; (define-key weblogger-entry-mode-map (kbd "C-c C-n") nil)
-             ;; (define-key weblogger-entry-mode-map (kbd "C-c C-p") nil)
 
-             (define-key weblogger-entry-mode-map
-               (kbd "C-c C-c") 'my-weblogger-send-entry)
-             (define-key weblogger-entry-mode-map
-               (kbd "C-c C-k") 'my-weblogger-quit)
+             (define-key weblogger-entry-mode-map (kbd "C-c n")   'weblogger-next-entry)
+             (define-key weblogger-entry-mode-map (kbd "C-c p")   'weblogger-prev-entry)
+             (define-key weblogger-entry-mode-map (kbd "C-c c")   'weblogger-start-entry)
+             (define-key weblogger-entry-mode-map (kbd "C-c C-c") 'my-weblogger-send-entry)
+             (define-key weblogger-entry-mode-map (kbd "C-c C-k") 'my-weblogger-quit)
              (zencoding-mode t)                     ; zencoding-mode
              (yas/minor-mode t)                     ; YASnippet マイナーモードを有効
              (auto-fill-mode -1)))                  ; 自動改行をOFF
