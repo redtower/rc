@@ -48,7 +48,7 @@
       `((,(concat "^" (regexp-opt browse-url-dhtml-url-list)) . my-external-browser)
         ("." . choose-browser)))
 
-(global-set-key "\C-xm" 'browse-url-at-point)   ; カーソル位置の文字列をURLとしてブラザを起動する
+(global-set-key "\C-xm" 'browse-url-at-point)   ; カーソル位置の文字列をURLとしてブラウザを起動する
 
 ;;=======================================================================
 ;; @ ttp で始まる URL を http として認識させる。
