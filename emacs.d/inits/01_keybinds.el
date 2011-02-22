@@ -28,7 +28,7 @@
 ;(global-set-key "\C-n"      'newline-and-indent)    ; 改行してインデント
 ;(global-set-key "\C-o"      'kill-line)             ; 行削除(C-kの代わり)
 ;(global-set-key (kbd "C-'") 'recenter)              ; カーソル位置を画面中央に(C-lの代わり)
-(define-key global-map "\C-t" 'other-window)         ; Window移動
+(define-key global-map "\C-^" 'other-window)         ; Window移動
 
 ;;=======================================================================
 ;; @ カーソル位置の単語を削除(M-d)

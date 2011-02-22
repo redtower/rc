@@ -33,6 +33,11 @@
 (add-to-list 'load-path "~/.emacs.d/elisp/window-layout")
 ;(add-to-list 'load-path "~/.emacs.d/elisp/e2wm")
 (add-to-list 'load-path "~/.emacs.d/elisp/shell-toggle")
+(add-to-list 'load-path "~/.emacs.d/elisp/elscreen")
+(add-to-list 'load-path "~/.emacs.d/elisp/elscreen-howm")
+(add-to-list 'load-path "~/.emacs.d/elisp/elscreen-dired")
+(add-to-list 'load-path "~/.emacs.d/elisp/elscreen-w3m")
+(add-to-list 'load-path "~/.emacs.d/elisp/apel")
 
 ;;=======================================================================
 ;; @ init-loader
