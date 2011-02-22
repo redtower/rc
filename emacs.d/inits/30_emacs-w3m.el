@@ -84,3 +84,8 @@
 (defadvice browse-url (before support-omitted-h (url &rest args) activate)
   (when (and url (string-match "\\`ttps?://" url))
     (setq url (concat "h" url))))
+
+;;=======================================================================
+;; @ ElScreen-w3m
+;;=======================================================================
+(require 'elscreen-w3m)
