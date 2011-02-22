@@ -17,8 +17,8 @@
 ;;=======================================================================
 ;; @ frame
 ;;=======================================================================
-(setq frame-title-format                        ; フレームのタイトル指定
-      (concat "%b - emacs@" system-name " - " system-configuration))
+;; (setq frame-title-format                        ; フレームのタイトル指定
+;;       (concat "%b - emacs@" system-name " - " system-configuration))
 
 ;;=======================================================================
 ;; @ modeilne
