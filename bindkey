@@ -1,8 +1,12 @@
-# ƒL[ƒoƒCƒ“ƒh‚Ìƒx[ƒX‚ğEmacsƒ‚[ƒh‚É‚·‚é
+# ã‚­ãƒ¼ãƒã‚¤ãƒ³ãƒ‰ã®ãƒ™ãƒ¼ã‚¹ã‚’Emacsãƒ¢ãƒ¼ãƒ‰ã«ã™ã‚‹
 bindkey -e
 
+# glob(*)ã«ã‚ˆã‚‹ã‚¤ãƒ³ã‚¯ãƒªãƒ¡ãƒ³ã‚¿ãƒ«ã‚µãƒ¼ãƒ
+bindkey '^R' history-incremental-pattern-search-backward
+bindkey '^S' history-incremental-pattern-search-forward
+
 # bindkye -e
-# emacsƒ‚[ƒh
+# emacsãƒ¢ãƒ¼ãƒ‰
 #bindkey "^@" set-mark-command
 #bindkey "^A" beginning-of-line
 #bindkey "^B" backward-char
@@ -141,7 +145,7 @@ bindkey -e
 
 
 # bindkye -v
-# viƒ‚[ƒh
+# viãƒ¢ãƒ¼ãƒ‰
 #bindkey -R "^A"-"^C" self-insert
 #bindkey "^D" list-choices
 #bindkey -R "^E"-"^F" self-insert
