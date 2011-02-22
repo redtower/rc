@@ -37,6 +37,7 @@
 (add-to-list 'load-path "~/.emacs.d/elisp/elscreen-howm")
 (add-to-list 'load-path "~/.emacs.d/elisp/elscreen-dired")
 (add-to-list 'load-path "~/.emacs.d/elisp/elscreen-w3m")
+(add-to-list 'load-path "~/.emacs.d/elisp/elscreen-color-theme")
 (add-to-list 'load-path "~/.emacs.d/elisp/apel")
 
 ;;=======================================================================
