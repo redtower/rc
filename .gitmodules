@@ -27,4 +27,4 @@
 	url = https://github.com/redtower/vim-change-currentdir.git
 [submodule "emacs.d/elisp/tumble"]
 	path = emacs.d/elisp/tumble
-	url = git://github.com/febuiles/tumble.git
+	url = https://github.com/febuiles/tumble.git
