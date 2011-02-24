@@ -10,6 +10,7 @@
 (setq delete-auto-save-files t)                 ; 終了時にオートセーブファイルを消す
 (load "dired-x")                                ; dired-x （C-x C-j）
 (fset 'yes-or-no-p 'y-or-n-p)                   ; "yes or no"を"y or n"に
+(setq kill-whole-line t)                        ; 1行削除をC-k一回で出来るようにする
 
 ;;=======================================================================
 ;; @ default setting
