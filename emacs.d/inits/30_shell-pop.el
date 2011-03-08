@@ -1,6 +1,6 @@
 ;; shell の存在を確認
 (defun skt:shell ()
-  (or (executable-find "zsh")
+  (or (executable-find "bash")
       ;; (executable-find "bash")
       ;; (executable-find "f_zsh") ;; Emacs + Cygwin を利用する人は Zsh の代りにこれにしてください
       ;; (executable-find "f_bash") ;; Emacs + Cygwin を利用する人は Bash の代りにこれにしてください
@@ -21,7 +21,7 @@
 
 (cond ((is_windows)     ; NTEmacs
        (shell-pop-set-internal-mode "shell")
-       (shell-pop-set-internal-mode-shell "zsh"))
+       (shell-pop-set-internal-mode-shell "bash"))
       ((is_mac)         ; Mac
        (shell-pop-set-internal-mode "shell")
 ;       (shell-pop-set-internal-mode "ansi-term")
