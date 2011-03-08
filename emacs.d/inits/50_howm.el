@@ -22,8 +22,8 @@
 (setq howm-list-all-title t)                    ; 全メモ一覧時にタイトル表示
 (setq howm-menu-expiry-hours 2)                 ; メニューを 2 時間キャッシュ
 (add-hook 'howm-mode-on-hook
-;          'auto-fill-mode                       ; howm の時は auto-fill にする
-          '(lambda () (auto-fill-mode -1))      ; howm の時は auto-fill でなくする
+;          'auto-fill-mode                       ; howm の時は auto-fill(自動改行) にする
+          '(lambda () (auto-fill-mode -1))      ; howm の時は auto-fill(自動改行) でなくする
           )
 (setq howm-view-summary-persistent nil)         ; RET でファイルを開く際, 一覧バッファを消す
                                                 ; C-u RET なら残る
