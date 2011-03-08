@@ -40,8 +40,8 @@
   (unless (minibufferp (current-buffer))
     (set-face-background 'mode-line
                          (cdr (assq viper-current-state
-                                    '((vi-state       . "Black")
-                                      (insert-state   . "Red")
+                                    '((vi-state       . "Darkred")
+                                      (insert-state   . "Black")
                                       (emacs-state    . "Wheat")
                                       (operator-state . "Green")
                                       (visual-state   . "Blue")
@@ -55,6 +55,7 @@
   ))(add-hook hook 'my-viper-set-mode-line-face))
 
 ;;=======================================================================
-;; @ viper-mode on
+;; @ viper-mode off
 ;;=======================================================================
-(viper-mode)
+;;(viper-mode)
+(viper-go-away)
