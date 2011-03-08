@@ -114,6 +114,7 @@ case "$TERM" in
     cygwin) color_prompt=yes;;
     screen) color_prompt=yes;;
     vt100) color_prompt=yes;;
+    emacs) color_prompt=yes;;
 esac
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
