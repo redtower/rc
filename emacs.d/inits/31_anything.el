@@ -2,7 +2,7 @@
 ;; @ anything
 ;;=======================================================================
 (require 'anything-startup)
-(global-set-key "\C-x\C-b" 'anything-for-files)
+(global-set-key "\C-x\C-b" 'anything-filelist+)
 
 ;=======================================================================
 ; ファイルにメモを残す（ips + anything-ipa）
