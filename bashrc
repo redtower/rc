@@ -12,6 +12,13 @@ ulimit -c 0
 export PAGER=less
 export LESS='-X -i -P ?f%f:(stdin).  ?lb%lb?L/%L..  [?eEOF:?pb%pb\%..]'
 
+# パスの設定
+export PATH=./:$PATH
+export PATH=./bin/:$PATH
+export PATH=~/bin/:$PATH
+
+export GIT_PROXY_COMMAND=/usr/local/bin/proxy-cmd.sh
+
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
