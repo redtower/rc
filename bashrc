@@ -17,7 +17,9 @@ export PATH=./:$PATH
 export PATH=./bin/:$PATH
 export PATH=~/bin/:$PATH
 
-export GIT_PROXY_COMMAND=/usr/local/bin/proxy-cmd.sh
+if [ -f /usr/local/bin/proxy-cmd.sh ]; then
+   export GIT_PROXY_COMMAND=/usr/local/bin/proxy-cmd.sh
+fi
 
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
