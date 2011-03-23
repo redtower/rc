@@ -20,22 +20,16 @@ set! browser.tabs.loadDivertedInBackground=true
 " options
 " ======================================================================
 " ex mode でインクリメント補完
-set wildoptions=auto
+set autocomplete
 
 " :[tab]open の補完対象と順番
 set complete=lbS
 
-" maine_coon.js
-"set mainecoon=a
+" 右側にスクロールバーを表示
+set scrollbars=true
 
-" ブラウザタイトルの変更
-set titlestring="Mozilla Firefox 3"
-
-"右側にスクロールバーを表示
-set guioptions=rb
-
-" 常にタブを表示
-set showtabline=2
+" ツールバーにタブのみ
+set toolbars=nonavigation,nobookmarks,nomenu,tabs
 
 " リンクのURIをステータスラインに表示
 set showstatuslinks=1
@@ -57,10 +51,10 @@ noremap k 5<C-y>
 "J/KにPageDown,PageUpを割り当て(LDRizeが効いている場合でも指のポジションを動かさずに済む
 noremap J <PageDown>
 noremap K <PageUp>
-"h/lで戻る/進む
+"H/Lで戻る/進む
 noremap H <A-Left>
 noremap L <A-Right>
-"H/Lでタブ移動
+"h/lでタブ移動
 noremap h gT
 noremap l gt
 "←/→でタブ移動
@@ -70,21 +64,14 @@ map <Right> <C-n>
 map <S-Right> :tabmove! +1<CR>
 map <S-Left> :tabmove! -1<CR>
 
-" URL中の数字を++/--
-"noremap ++ <C-a>
-"noremap -- <C-x>
-
 "Ctrl+rで再起動,Ctrl+hでヘルプ ,sで設定ファイル再読込
 map <C-r> :restart<CR>
 map ,s :so ~/.vimperatorrc<CR>
 
 "各種バー表示をトグル
-noremap <C-1> :set guioptions=r<cr>
-noremap <C-2> :set guioptions=Bmr<cr>
-"noremap <C-3> :set guioptions=BmTr<cr>
-noremap <C-4> :set mainecoon=amc<cr>
-noremap <C-5> :set mainecoon=am<cr>
-noremap <C-6> :set mainecoon=m<cr>
+noremap <C-1> :set toolbars=all<cr>
+noremap <C-2> :set toolbars=nonavigation,nobookmarks,nomenu,tabs<cr>
+noremap <C-3> :set toolbars=nonavigation,nobookmarks,menu,tabs<cr>
 noremap <C-h> :sb はてなブックマークサイドバー<cr>
 
 "qmarks
@@ -112,6 +99,10 @@ cnoremap <C-v> <C-v><C-v>
 cnoremap <C-x> <C-v><C-x>
 cnoremap <C-z> <C-v><C-z>
 
+" クイックヒントの文字設定
+" ref. http://ameblo.jp/tkseeh/entry-10791022888.html
+noremap f :set hintchars=naiueofdsghjkl;rwv<CR>f
+
 " plugins
 " ======================================================================
 
@@ -119,12 +110,8 @@ let g:plugin_loader_roots = "~/rc/vimperator-plugins/"
 js <<EOF
 liberator.globalVariables.plugin_loader_plugins = <>
     _libly
-    char-hints-mod2
     commandBookmarklet
     feedSomeKeys_3
-    maine_coon
-    migemo-find
-    migemo_hint
     ime_controller
 </>.toString().split(/\s+/).filter(function(n) n);
 EOF
@@ -132,13 +119,6 @@ EOF
 " ime_controller.js
 let g:ex_ime_mode = "inactive"
 let g:textarea_ime_mode = "inactive"
-
-" char_hints_mod2.js
-let g:hintsio="io"
-let g:hintchars="HJKLASDFGYUIOPQWERTNMZXCVB"
-
-" migemo_hint.js
-set hintmatching=custom
 
 " hatena bookmark
 javascript if (typeof hBookmark != 'undefined') liberator.loadScript('chrome://hatenabookmark/content/vimperator/plugin/hatenabookmark.js', {__proto__: this});
@@ -162,6 +142,7 @@ autocmd LocationChange ^http://.*\.tumblr\.com/ :fmap i,tj
 " colorscheme
 " ======================================================================
 colorscheme BrewBlue
+
 style -name tab-style-fix chrome://* <<EOM
 .tab-text-shadow,
 .tabs-newtab-button {
