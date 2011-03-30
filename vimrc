@@ -54,6 +54,8 @@ set wildmenu
 set formatoptions+=mM
 " 日本語整形スクリプト(by. 西岡拓洋さん)用の設定
 let format_allow_over_tw = 1	" ぶら下り可能幅
+" 自動改行（70）
+autocmd BufRead *.eml set tw=70
 
 "---------------------------------------------------------------------------
 " GUI固有ではない画面表示の設定:
