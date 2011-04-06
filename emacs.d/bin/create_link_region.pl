@@ -9,7 +9,10 @@ binmode(STDOUT, 'utf8');
 my $scraper = scraper { process 'title', 'title' => 'TEXT' };
 if ($ENV{'HTTP_PROXY'}) {
     $scraper->user_agent->proxy('http', $ENV{'HTTP_PROXY'});
+} elsif ($ENV{'http_proxy'}) {
+    $scraper->user_agent->proxy('http', $ENV{'http_proxy'});
 }
+
 my $href;
 {
     local $/;
