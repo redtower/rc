@@ -65,3 +65,17 @@
 ;; @ generic
 ;;=======================================================================
 (require 'generic-x)                            ; 各種設定ファイルを色付けする
+
+;;=======================================================================
+;; @ 折り返し表示 ON/OFF
+;; ref. http://ubulog.blogspot.com/2007/09/emacsonoff.html
+;;=======================================================================
+(defun toggle-truncate-lines ()
+  "折り返し表示をトグル動作します."
+  (interactive)
+  (if truncate-lines
+      (setq truncate-lines nil)
+    (setq truncate-lines t))
+  (recenter))
+
+(global-set-key "\C-c\C-l" 'toggle-truncate-lines) ; 折り返し表示ON/OFF
