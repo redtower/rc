@@ -182,6 +182,7 @@ fi
 # some more ls aliases
 alias which='type -path'
 alias cp='cp -i'
+alias more="less '-E -P?f--More-- (%pb\%):--More--.'"
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
