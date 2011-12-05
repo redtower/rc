@@ -64,10 +64,22 @@ noremap <C-h> :sb はてなブックマークサイドバー<cr>
 " qmarks "
 map qm <esc>:qmark<Space>
 map qa <esc>:qmarks<cr>
+" gor - Google Reader "
 qmark r http://www.google.co.jp/reader/
+" got - Tmublr "
 qmark t http://www.tumblr.com/
+" gom - Gmail "
 qmark m http://mail.google.com/mail/
+" gog - Remember the Milk "
 qmark g http://www.rememberthemilk.com/
+" goa - Google Tasks "
+qmark a https://mail.google.com/tasks/canvas
+" goc - Google Calendar "
+qmark c https://www.google.com/calendar/
+" gol - Read It Later "
+qmark l http://readitlaterlist.com/
+" goi - Instapaper "
+qmark i http://www.instapaper.com/
 
 " OSのキーバインドを再現 "
 noremap <C-a> <C-v><C-a>
