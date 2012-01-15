@@ -10,6 +10,13 @@ endif
 
 :let $LOCALVIM = '~/$VIMFILE_DIR/local/'
 
+" Vundle
+set rtp+=~/$VIMFILE_DIR/bundle/vundle/
+call vundle#rc('~/$VIMFILE_DIR/bundle')
+
+Bundle 'Shougo/neocomplcache'
+Bundle 'winmanager'
+
 " 日本語関連の設定ファイル
 source $LOCALVIM/lang.vim
 
