@@ -64,27 +64,27 @@ noremap <C-h> :sb はてなブックマークサイドバー<cr>
 " qmarks "
 map qm <esc>:qmark<Space>
 map qa <esc>:qmarks<cr>
+" gor - Google Reader "
 qmark r http://www.google.co.jp/reader/
+" got - Tmublr "
 qmark t http://www.tumblr.com/
+" gom - Gmail "
 qmark m http://mail.google.com/mail/
+" gog - Remember the Milk "
 qmark g http://www.rememberthemilk.com/
+" goa - Google Tasks "
+qmark a https://mail.google.com/tasks/canvas
+" goc - Google Calendar "
+qmark c https://www.google.com/calendar/
+" gol - Read It Later "
+qmark l http://readitlaterlist.com/
+" goi - Instapaper "
+qmark i http://www.instapaper.com/
 
 " OSのキーバインドを再現 "
-noremap <C-a> <C-v><C-a>
-noremap <C-c> <C-v><C-c>
-
-inoremap <C-a> <C-v><C-a>
-inoremap <C-c> <C-v><C-c>
-inoremap <C-v> <C-v><C-v>
-inoremap <C-x> <C-v><C-x>
-inoremap <C-z> <C-v><C-z>
-inoremap <C-Space> <C-v><C-Space>
-
-cnoremap <C-a> <C-v><C-a>
-cnoremap <C-c> <C-v><C-c>
-cnoremap <C-v> <C-v><C-v>
-cnoremap <C-x> <C-v><C-x>
-cnoremap <C-z> <C-v><C-z>
+noremap <C-a> i<C-a>
+inoremap <C-a> i<C-a>
+cnoremap <C-a> i<C-a>
 
 " クイックヒントの文字設定 "
 " ref. http://ameblo.jp/tkseeh/entry-10791022888.html "
