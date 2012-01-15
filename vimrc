@@ -16,6 +16,11 @@ call vundle#rc('~/$VIMFILE_DIR/bundle')
 
 Bundle 'Shougo/neocomplcache'
 Bundle 'winmanager'
+Bundle 'taglist.vim'
+Bundle 'redtower/vim-browser'
+Bundle 'redtower/vim-change-currentdir'
+Bundle 'thinca/vim-github'
+Bundle 'edsono/vim-bufexplorer'
 
 " 日本語関連の設定ファイル
 source $LOCALVIM/lang.vim
@@ -170,9 +175,6 @@ source $LOCALVIM/insertcurrentdate.vim
 
 "---------------------------------------------------------------------------
 " プラグインの設定:
-
-" pathogen.vimの設定（各種プラグインの読み込み）
-source $LOCALVIM/pathogenvimrc.vim
 
 " YankRing.vim - http://www.vim.org/scripts/script.php?script_id=1234
 "                http://nanasi.jp/articles/vim/yankring_vim.html
