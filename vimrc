@@ -70,6 +70,22 @@ let format_allow_over_tw = 1	" ぶら下り可能幅
 autocmd BufRead *.eml set tw=70
 
 "---------------------------------------------------------------------------
+" コンソールでのカラー表示のための設定(暫定的にUNIX専用)
+if has('unix') && !has('gui_running')
+  let uname = system('uname')
+  if uname =~? "linux"
+    set term=builtin_linux
+  elseif uname =~? "freebsd"
+    set term=builtin_cons25
+  elseif uname =~? "Darwin"
+    set term=builtin_xterm
+  else
+    set term=builtin_xterm
+  endif
+  unlet uname
+endif
+
+"---------------------------------------------------------------------------
 " GUI固有ではない画面表示の設定:
 "
 " 行番号を表示 (nonumber:非表示)
@@ -120,22 +136,6 @@ set noswapfile
 "---------------------------------------------------------------------------
 " キー操作登録：
 :map U <C-R>			# U 	 取り消しの取り消し（Redo）
-
-"---------------------------------------------------------------------------
-" コンソールでのカラー表示のための設定(暫定的にUNIX専用)
-if has('unix') && !has('gui_running')
-  let uname = system('uname')
-  if uname =~? "linux"
-    set term=builtin_linux
-  elseif uname =~? "freebsd"
-    set term=builtin_cons25
-  elseif uname =~? "Darwin"
-    set term=builtin_xterm
-  else
-    set term=builtin_xterm
-  endif
-  unlet uname
-endif
 
 "---------------------------------------------------------------------------
 " コンソール版で環境変数$DISPLAYが設定されていると起動が遅くなる件へ対応
