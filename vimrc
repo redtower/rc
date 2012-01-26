@@ -14,6 +14,7 @@ endif
 set rtp+=~/$VIMFILE_DIR/bundle/vundle/
 call vundle#rc('~/$VIMFILE_DIR/bundle')
 
+Bundle 'vundle'
 Bundle 'Shougo/neocomplcache'
 Bundle 'winmanager'
 Bundle 'taglist.vim'
@@ -211,5 +212,8 @@ let NERDShutUp = 1
 set runtimepath+=~/vimfiles/chalice
 set runtimepath+=~/.vim/chalice
 
-" neocomplcache
-let g:neocomplcache_enable_at_startup = 1
+
+if $CYGWIN != "yes"
+  " neocomplcache
+  let g:neocomplcache_enable_at_startup = 1
+endif

@@ -24,6 +24,10 @@ function is_emacs(){
     return 1
 }
 
+if is_cygwin ; then
+    export CYGWIN=yes
+fi
+
 # ヒストリの設定
 HISTFILE=~/.histfile
 HISTSIZE=50000
@@ -179,12 +183,14 @@ if is_cygwin ; then
    export SHELL=/bin/zsh
 fi
 if ! is_darwin ; then
+if ! is_cygwin ; then
 if [ "$TERM" != "screen-bce" ]; then
     if type byobu > /dev/null ; then
         [ ${STY} ] || byobu -rx || byobu -D -RR
     else
         [ ${STY} ] || screen -rx || screen -D -RR
     fi
+fi
 fi
 fi
 
