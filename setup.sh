@@ -40,7 +40,7 @@ F1="$HOME/rc/vimrc"
 F2="$HOME/rc/gvimrc"
 F3="$HOME/rc/vim"
 
-echo "setup Vim（$T1, $T2, $T2） ok? [y/n]"
+echo "setup Vim（$T1, $T2, $T3） ok? [y/n]"
 read ANSWER
 
 if [ "${ANSWER}" = "y" ];
