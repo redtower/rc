@@ -79,6 +79,7 @@ esac
 PATH=./:$PATH
 PATH=./bin/:$PATH
 PATH=~/bin/:$PATH
+PATH=/usr/local/bin/:$PATH
 # export MANPATH=/usr/local/man:/usr/share/man
 
 # 色付け
