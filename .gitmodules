@@ -1,9 +1,9 @@
-[submodule "vimperator-plugins"]
-	path = vimperator-plugins
-	url = https://github.com/vimpr/vimperator-plugins.git
 [submodule "emacs.d/elisp/tumble"]
 	path = emacs.d/elisp/tumble
 	url = https://github.com/febuiles/tumble.git
 [submodule "vim/bundle/vundle"]
 	path = vim/bundle/vundle
 	url = http://github.com/gmarik/vundle.git
+[submodule "vimperator/vimperator-plugins"]
+	path = vimperator/vimperator-plugins
+	url = https://github.com/vimpr/vimperator-plugins.git

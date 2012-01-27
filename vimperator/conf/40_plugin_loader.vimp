@@ -1,4 +1,4 @@
-let g:plugin_loader_roots = "~/rc/vimperator-plugins/"
+let g:plugin_loader_roots = "~/rc/vimperator/vimperator-plugins/"
 js <<EOF
 liberator.globalVariables.plugin_loader_plugins = <>
     _libly
