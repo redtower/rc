@@ -1,0 +1,11 @@
+let g:plugin_loader_roots = "~/rc/vimperator-plugins/"
+js <<EOF
+liberator.globalVariables.plugin_loader_plugins = <>
+    _libly
+    commandBookmarklet
+    feedSomeKeys_3
+    ime_controller
+    statusline-toolbar
+    tombloo
+</>.toString().split(/\s+/).filter(function(n) n);
+EOF

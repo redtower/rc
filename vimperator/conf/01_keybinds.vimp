@@ -1,0 +1,56 @@
+" mappings "
+" ====================================================================== "
+" j/kの移動量を5倍に "
+noremap j 5<C-e>
+noremap k 5<C-y>
+" H/Lで戻る/進む "
+noremap H <A-Left>
+noremap L <A-Right>
+" h/lでタブ移動 "
+noremap h gT
+noremap l gt
+" ←/→でタブ移動 "
+map <Left> <C-p>
+map <Right> <C-n>
+" Shift+←/Shift+→でタブ位置変更 "
+map <S-Right> :tabmove! +1<CR>
+map <S-Left> :tabmove! -1<CR>
+
+" Ctrl+rで再起動,Ctrl+hでヘルプ ,sで設定ファイル再読込 "
+map <C-r> :restart<CR>
+map ,s :so ~/.vimperatorrc<CR>
+
+" 各種バー表示をトグル "
+noremap <C-1> :set toolbars=all<cr>
+noremap <C-2> :set toolbars=nonavigation,nobookmarks,nomenu,tabs<cr>
+noremap <C-3> :set toolbars=nonavigation,nobookmarks,menu,tabs<cr>
+noremap <C-h> :sb はてなブックマークサイドバー<cr>
+
+" qmarks "
+map qm <esc>:qmark<Space>
+map qa <esc>:qmarks<cr>
+" gor - Google Reader "
+qmark r http://www.google.co.jp/reader/
+" got - Tmublr "
+qmark t http://www.tumblr.com/
+" gom - Gmail "
+qmark m http://mail.google.com/mail/
+" gog - Remember the Milk "
+qmark g http://www.rememberthemilk.com/
+" goa - Google Tasks "
+qmark a https://mail.google.com/tasks/canvas
+" goc - Google Calendar "
+qmark c https://www.google.com/calendar/
+" gol - Read It Later "
+qmark l http://readitlaterlist.com/
+" goi - Instapaper "
+qmark i http://www.instapaper.com/
+
+" OSのキーバインドを再現 "
+noremap <C-a> i<C-a>
+inoremap <C-a> i<C-a>
+cnoremap <C-a> i<C-a>
+
+" クイックヒントの文字設定 "
+" ref. http://ameblo.jp/tkseeh/entry-10791022888.html "
+noremap f :set hintchars=naiueofdsghjkl;rwv<CR>f

@@ -1,0 +1,14 @@
+" feedSomeKeys_3.js - vimperator のショートカットキーを無効にする。
+"
+command! -nargs=+ lazy autocmd VimperatorEnter .* <args>
+
+" Google Reader"
+lazy fmaps -u='www\.google\.(co\.jp|com)/reader' -events=vkeypress j k n p m s v A r S N P X O gh ga gs gt gu u / ? J K
+
+" Gmail"
+lazy fmaps -u='mail\.google\.(co\.jp|com)/mail' c / j k n p o u e x s r a # [ ] z ? gi gs gt gd ga gc
+" はてブ"
+lazy fmaps -u='^http://b\.hatena\.ne\.jp/(?!(entry|articles|guide))' j k o,oj e a,b
+
+" remember the milk"
+lazy fmaps -u 'rememberthemilk\.com' -event=keypress j k tt,t y,c c,y pu,1 pi,2 po,3 pp,4 <Del> x,i h H,<C-S-Left> L,<C-S-Right>

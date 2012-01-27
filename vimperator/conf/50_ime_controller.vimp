@@ -1,0 +1,3 @@
+" ime_controller.js "
+let g:ex_ime_mode = "inactive"
+let g:textarea_ime_mode = "inactive"

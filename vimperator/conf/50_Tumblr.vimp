@@ -1,0 +1,2 @@
+" Tumblr (要dashboard+tombloo.user.js, ReblogCommand.user.js) "
+autocmd LocationChange ^http://.*\.tumblr\.com/ :fmap i,tj
