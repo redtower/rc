@@ -11,7 +11,3 @@ map <silent> <leader>tl :TlistToggle<CR>
 
 let NERDSpaceDelims = 1
 let NERDShutUp = 1
-
-set runtimepath+=~/vimfiles/chalice
-set runtimepath+=~/.vim/chalice
-
