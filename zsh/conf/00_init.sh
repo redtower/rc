@@ -14,7 +14,3 @@ function is_emacs(){
     [[ "$EMACS" != "" ]] && return 0
     return 1
 }
-
-if is_cygwin ; then
-    export CYGWIN=yes
-fi
