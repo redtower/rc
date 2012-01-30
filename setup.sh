@@ -1,5 +1,25 @@
 #!/bin/sh
 
+if [ $OSTYPE = cygwin ]; then
+COMMAND_LNK(){
+    F=${1};shift;
+    T=${1};shift;
+
+    if [ -f $F ]; then
+        echo "source $F" > $T
+    else
+        linkd $T $F
+    fi
+}
+else
+COMMAND_LNK(){
+    F=${1};shift;
+    T=${1};shift;
+
+    ln -s $F $T
+}
+fi
+
 LNK(){
     F=${1};shift;
     T=${1};shift;
@@ -13,7 +33,7 @@ LNK(){
         return;
     fi
 
-    ln -s $F $T
+    COMMAND_LNK $F $T
     echo "created $T";
 }
 
