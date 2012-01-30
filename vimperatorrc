@@ -2,6 +2,9 @@
 " ====================================================================== "
 js <<EOF
 let dir = io.File("~/vimperator/conf/");
+if (!dir.exists()) {
+   dir = io.File("~/.vimperator/conf/");
+}
 
 if (dir.exists() && dir.isDirectory() && dir.isReadable()) {
   let files = dir.readDirectory(true);

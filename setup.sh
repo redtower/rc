@@ -53,13 +53,16 @@ fi
 # zsh
 T1="$HOME/.zshrc"
 F1="$HOME/rc/zshrc"
+T2="$HOME/.zsh"
+F2="$HOME/rc/zsh"
 
-echo "setup zsh（$T1） ok? [y/n]"
+echo "setup zsh（$T1, $T2） ok? [y/n]"
 read ANSWER
 
 if [ "${ANSWER}" = "y" ];
 then
     LNK $F1 $T1
+    LNK $F2 $T2
 fi
 
 # git

@@ -28,6 +28,7 @@ init
 * .vim/
 
 ##### zsh #####
+* .zsh/
 * .zshrc
 
 ##### Git #####
