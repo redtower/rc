@@ -1,15 +1,19 @@
 # ログイン時にscreen起動する（MacOS,Cygwin以外）
+function goscreen() {
+    if type byobu > /dev/null ; then
+        [ ${STY} ] || byobu -rx || byobu -D -RR
+    else
+        [ ${STY} ] || screen -rx || screen -D -RR
+    fi
+}
+
 if is_cygwin ; then
    export SHELL=/bin/zsh
 fi
 if ! is_darwin ; then
 if ! is_cygwin ; then
 if [ "$TERM" != "screen-bce" ]; then
-    if type byobu > /dev/null ; then
-        [ ${STY} ] || byobu -rx || byobu -D -RR
-    else
-        [ ${STY} ] || screen -rx || screen -D -RR
-    fi
+    goscreen
 fi
 fi
 fi
