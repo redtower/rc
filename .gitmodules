@@ -10,3 +10,6 @@
 [submodule "zsh/plugin/zaw"]
 	path = zsh/plugin/zaw
 	url = https://github.com/zsh-users/zaw.git
+[submodule "zsh/plugin/z"]
+	path = zsh/plugin/z
+	url = https://github.com/rupa/z.git
