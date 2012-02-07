@@ -6,9 +6,16 @@ autoload -Uz colors
 colors
 
 # プロンプトの設定 
-PROMPT="[%{${fg[magenta]}%}%n%{${reset_color}%}@%{${fg[yellow]}%}%m%1(v|%F{green}%1v%f|)%{${fg[yellow]}%}%{${reset_color}%}]%b%(!.#.$) "
+PUS="%{${fg[magenta]}%}%n%{${reset_color}%}"
+PHO="%{${fg[yellow]}%}%m%{${reset_color}%}"
+PVC="%1(v|%F{green}%1v%f|)%{${reset_color}%}"
+PPR="%b%(!.#.$)"
+PROMPT="[${PHO}${PVC}]${PPR} "
 
-RPROMPT="[%{${fg[red]}%}%~%{${reset_color}%}]:[%{${fg_bold[blue]}%}%D %T%{${reset_color}%}]"
+PPW="%{${fg[red]}%}%~%{${reset_color}%}"
+PDT="%{${fg_bold[blue]}%}%D %T%{${reset_color}%}"
+RPROMPT="[${PPW}]:[${PDT}]"
+
 SPROMPT="%{${fg[red]}%}%r is correct? [n,y,a,e]:%{${reset_color}%} "
 
 # vcs_infoがzsh4.3.7以上に含まれるためバージョンをチェックする。
@@ -41,4 +48,3 @@ function _update_vcs_info_msg() {
 autoload -Uz add-zsh-hook
 add-zsh-hook precmd _update_vcs_info_msg
 fi
-
