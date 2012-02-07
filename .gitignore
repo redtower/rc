@@ -1,7 +1,8 @@
-private
-vimperator/info
+private/
+vimperator/info/
 vim/.netrwhist
 vim/bundle/
+!vim/bundle/vundle/
 
 emacs.d/ac-comphist.dat
 emacs.d/auto-save-list/
