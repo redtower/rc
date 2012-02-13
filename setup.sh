@@ -47,7 +47,8 @@ echo "setup Vimperator（$T1, $T2） ok? [y/n]"
 read ANSWER
 
 if [ "${ANSWER}" = "y" ];
-then
+
+   then
     LNK $F1 $T1
     LNK $F2 $T2
 fi
@@ -102,11 +103,9 @@ fi
 
 # Emacs
 T1="$HOME/.emacs.d"
-T2="$HOME/howm"
 F1="$HOME/rc/emacs.d"
-F2="$HOME/rc/private/howm"
 
-echo "setup Emacs（$T1, $T2） ok? [y/n]"
+echo "setup Emacs（$T1） ok? [y/n]"
 read ANSWER
 
 if [ "${ANSWER}" = "y" ];

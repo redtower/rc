@@ -37,7 +37,6 @@ init
 
 ##### Emacs #####
 * .emacs.d/
-* howm/
 
 caution
 ----------
