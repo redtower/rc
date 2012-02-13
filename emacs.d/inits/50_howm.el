@@ -51,3 +51,6 @@
          (= (point-min) (point-max)))
     (delete-file
      (buffer-file-name (current-buffer)))))
+
+
+(setq howm-directory "~/rc/private/memo/howm/")
