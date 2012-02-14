@@ -1,8 +1,9 @@
 [[ -f ~/.zsh/plugin/z/z.sh ]] && source ~/.zsh/plugin/z/z.sh
 
-function precmd () {
+function z_precmd () {
     _z --add "$(pwd -P)"
 }
+precmd_functions=($precmd_functions z_precmd)
 
 
 # in zaw
