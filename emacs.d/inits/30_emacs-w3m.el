@@ -17,15 +17,10 @@
                 "tell application \"Safari\" to activate") url))
     (start-process (concat "open " url) nil "open" url)))
 
-(if (is_windows)
-    (setq browse-url-browser-function 'browse-url-generic
-      browse-url-generic-program
-      (w32-short-file-name "C:/Program Files/Mozilla Firefox/firefox.exe")) )
-
 (defun my-external-browser (url &rest args) ; 外部ブラウザ
   (cond
    ((is_mac)     (browse-url-default-macosx-browser url))
-   ((is_windows) (browse-url-generic url))))
+   ((is_windows) (browse-url-default-windows-browser url))))
 
 (defun choose-browser (url &rest args)      ; ブラウザ選択
   (interactive "sURL: ")
