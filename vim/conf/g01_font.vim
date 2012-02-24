@@ -5,7 +5,7 @@ if has('win32')
   " Windowsóp
   "set gfn=Terminal:h10:cSHIFTJIS
   "set gfn=OsakaÅ|ìôïù:h10:cSHIFTJIS
-  set gfn=M+2VM+IPAG_circle:h10:cSHIFTJIS
+  set gfn=M+2VM+IPAG_circle:h12:cSHIFTJIS
   "set guifont=MS_Gothic:h12:cSHIFTJIS
   "set guifont=MS_Mincho:h12:cSHIFTJIS
   " çsä‘äuÇÃê›íË
