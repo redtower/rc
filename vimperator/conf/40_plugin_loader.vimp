@@ -7,5 +7,6 @@ liberator.globalVariables.plugin_loader_plugins = <>
     ime_controller
     statusline-toolbar
     tombloo
+    copy
 </>.toString().split(/\s+/).filter(function(n) n);
 EOF
