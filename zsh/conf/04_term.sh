@@ -1,9 +1,3 @@
-if is_darwin ; then
-    # MAC（iTerm）の ls でディレクトリが醜いため青太に変更
-    # ref. http://news.mynavi.jp/column/zsh/009/index.html
-    export LSCOLORS=Ex
-fi
-
 # ファイルリスト補完でもlsと同様に色をつける｡
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
