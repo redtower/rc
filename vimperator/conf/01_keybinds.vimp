@@ -45,6 +45,8 @@ qmark c https://www.google.com/calendar/
 qmark l http://readitlaterlist.com/
 " goi - Instapaper "
 qmark i http://www.instapaper.com/
+" gop - Picket "
+qmark p http://getpocket.com/
 
 " OSのキーバインドを再現 "
 noremap <C-a> i<C-a>
