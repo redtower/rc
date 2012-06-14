@@ -12,3 +12,6 @@ lazy fmaps -u='^http://b\.hatena\.ne\.jp/(?!(entry|articles|guide))' j k o,oj e 
 
 " remember the milk"
 lazy fmaps -u 'rememberthemilk\.com' -event=keypress j k tt,t y,c c,y pu,1 pi,2 po,3 pp,4 <Del> x,i h H,<C-S-Left> L,<C-S-Right>
+
+" Livedoor Reader"
+lazy fmaps -u='reader\.livedoor\.(co\.jp|com)/reader' -events=vkeypress j k n p m s v A r S N P X O gh ga gs gt gu u / ? J K
