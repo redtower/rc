@@ -26,6 +26,10 @@ noremap <C-2> :set toolbars=nonavigation,nobookmarks,nomenu,tabs<cr>
 noremap <C-3> :set toolbars=nonavigation,nobookmarks,menu,tabs<cr>
 noremap <C-h> :sb はてなブックマークサイドバー<cr>
 
+" URL Copy "
+noremap <C-y> :copy titleAndURL<CR><esc>
+noremap <A-y> :copy anchor<CR><esc>
+
 " qmarks "
 map qm <esc>:qmark<Space>
 map qa <esc>:qmarks<cr>
