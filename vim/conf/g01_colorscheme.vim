@@ -1,4 +1,5 @@
 "---------------------------------------------------------------------------
 " ÉJÉâÅ[ê›íË:
 "colorscheme morning
-colorscheme darkblue
+"colorscheme darkblue
+colorscheme jellybeans
