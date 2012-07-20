@@ -13,13 +13,15 @@ fi
 if ! is_darwin ; then
 if ! is_cygwin ; then
 if [ "$TERM" != "screen-bce" ]; then
+if [ "$TERM" != "screen" ]; then
     goscreen
+fi
 fi
 fi
 fi
 
 # screen のタイトルに最後に実行したコマンドを表示する
-if [ "$TERM" = "screen-bce" ];
+if [ "$TERM" = "screen-bce" -o "$TERM" = "screen" ];
 then
     screen_preexec() { # コマンドの実行前に呼び出される
         emulate -L zsh

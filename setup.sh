@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [ $OSTYPE = cygwin ]; then
+if [ "$OSTYPE" = "cygwin" ]; then
 COMMAND_LNK(){
     F=${1};shift;
     T=${1};shift;
