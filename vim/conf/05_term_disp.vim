@@ -23,7 +23,8 @@ set showcmd
 " タイトルを表示
 set title
 " 画面を黒地に白にする (次行の先頭の " を削除すれば有効になる)
-colorscheme evening " (Windows用gvim使用時はgvimrcを編集すること)
+"colorscheme evening " (Windows用gvim使用時はgvimrcを編集すること)
+colorscheme jellybeans " (Windows用gvim使用時はgvimrcを編集すること)
 
 "シンタックスハイライトを有効にする
 if has("syntax")
