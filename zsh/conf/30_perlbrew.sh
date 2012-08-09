@@ -1,3 +1,0 @@
-if [ -e ~/perl5/perlbrew/etc/bashrc ] ; then
-    source ~/perl5/perlbrew/etc/bashrc
-fi
