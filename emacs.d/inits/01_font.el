@@ -24,5 +24,10 @@
        (font-spec :family "Hiragino Kaku Gothic ProN" :size 14)
        nil
        'append)
-      (add-to-list 'default-frame-alist '(font . "fontset-menlokakugo"))
-      ))))))
+      (add-to-list 'default-frame-alist '(font . "fontset-menlokakugo")))
+     (
+      (set-default-font "Monospace-12")
+      (set-fontset-font (frame-parameter nil 'font)
+                        'japanese-jisx0208
+                        '("IPAゴシック" . "unicode-bmp")))
+     )))))
