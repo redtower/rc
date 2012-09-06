@@ -2,7 +2,7 @@
 ;; @ font
 ;;=======================================================================
 (cond
- ((>= 23 emacs-major-version) ; Enacs 23 以降
+ ((>= emacs-major-version 23) ; Enacs 23 以降
   (cond
    (window-system
     (cond
