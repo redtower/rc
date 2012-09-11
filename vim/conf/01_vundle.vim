@@ -4,6 +4,7 @@ call vundle#rc('~/$VIMFILE_DIR/bundle')
 
 Bundle 'vundle'
 Bundle 'Shougo/neocomplcache'
+Bundle 'Shougo/neocomplcache-snippets-complete'
 Bundle 'winmanager'
 Bundle 'taglist.vim'
 Bundle 'redtower/vim-browser'
