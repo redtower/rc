@@ -53,4 +53,4 @@
      (buffer-file-name (current-buffer)))))
 
 
-(setq howm-directory "~/rc/private/memo/howm/")
+(setq howm-directory "~/rc/memo/howm/")
