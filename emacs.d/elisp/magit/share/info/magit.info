@@ -47,6 +47,7 @@ compatibility are still welcome.
 * Wazzup::
 * Merging::
 * Rebasing::
+* Interactive Rebasing::
 * Rewriting::
 * Pushing and Pulling::
 * Bisecting::
@@ -671,7 +672,7 @@ you can only stage whole files once all conflicts in them have been
 resolved.
 
 
-File: magit.info,  Node: Rebasing,  Next: Rewriting,  Prev: Merging,  Up: Top
+File: magit.info,  Node: Rebasing,  Next: Interactive Rebasing,  Prev: Merging,  Up: Top
 
 18 Rebasing
 ***********
@@ -691,9 +692,34 @@ configuring `git pull' to rebase instead of merge, for example.  Such a
 rebase can be finished with `R' as well.
 
 
-File: magit.info,  Node: Rewriting,  Next: Pushing and Pulling,  Prev: Rebasing,  Up: Top
+File: magit.info,  Node: Interactive Rebasing,  Next: Rewriting,  Prev: Rebasing,  Up: Top
 
-19 Rewriting
+19 Interactive Rebasing
+***********************
+
+Typing `E' in the status buffer will initiate an interactive rebase.
+This is equivalent to running `git rebase --interactive' at the command
+line. The `git-rebase-todo' file will be opened in an Emacs buffer for
+you to edit. This file is opened using `emacsclient', so just edit this
+file as you normally would, then call the `server-edit' function
+(typically bound to `C-x #') to tell Emacs you are finished editing,
+and the rebase will proceed as usual.
+
+   If you have loaded `rebase-mode.el' (which is included in the Magit
+distribution), the `git-rebase-todo' buffer will be in `rebase-mode'.
+This mode disables normal text editing but instead provides single-key
+commands (shown in the buffer) to perform all the edits that you would
+normally do manually, including changing the operation to be performed
+each commit ("pick", "squash", etc.), deleting (commenting out) commits
+from the list, and reordering commits. You can finish editing the
+buffer and proceed with the rebase by pressing `C-c C-c', which is
+bound to `server-edit' in this mode, and you can abort the rebase with
+`C-c C-k', just like when editing a commit message in Magit.
+
+
+File: magit.info,  Node: Rewriting,  Next: Pushing and Pulling,  Prev: Interactive Rebasing,  Up: Top
+
+20 Rewriting
 ************
 
 As hinted at earlier, you can rewrite your commit history.  For
@@ -745,7 +771,7 @@ keeping information from the status buffer.
 
    If you rather wish to start over, type `r a'.  This will abort the
 rewriting, resetting the current head back to the value it had before
-the rewrite was started with `r s'.
+the rewrite was started with `r b'.
 
    Typing `r f' will _finish_ the rewrite: it will apply all unused
 commits one after the other, as if you would us `A' with all of them.
@@ -762,7 +788,7 @@ it, like from any other diff.
 
 File: magit.info,  Node: Pushing and Pulling,  Next: Bisecting,  Prev: Rewriting,  Up: Top
 
-20 Pushing and Pulling
+21 Pushing and Pulling
 **********************
 
 Magit will run `git push' when you type `P P'.  If you give a prefix
@@ -801,7 +827,7 @@ branch, Magit shows them in a section called _Unpulled changes_.  Typing
 
 File: magit.info,  Node: Submodules,  Next: Using Magit Extensions,  Prev: Bisecting,  Up: Top
 
-21 Submodules
+22 Submodules
 *************
 
 `M u'
@@ -820,7 +846,7 @@ File: magit.info,  Node: Submodules,  Next: Using Magit Extensions,  Prev: Bisec
 
 File: magit.info,  Node: Bisecting,  Next: Submodules,  Prev: Pushing and Pulling,  Up: Top
 
-22 Bisecting
+23 Bisecting
 ************
 
 Magit supports bisecting by showing how many revisions and steps are
@@ -850,7 +876,7 @@ r'.
 
 File: magit.info,  Node: Using Magit Extensions,  Next: Using Git Directly,  Prev: Submodules,  Up: Top
 
-23 Magit Extensions
+24 Magit Extensions
 *******************
 
 * Menu:
@@ -864,7 +890,7 @@ File: magit.info,  Node: Using Magit Extensions,  Next: Using Git Directly,  Pre
 
 File: magit.info,  Node: Activating extensions,  Next: Interfacing with Subversion,  Up: Using Magit Extensions
 
-23.1 Activating extensions
+24.1 Activating extensions
 ==========================
 
 Magit comes with a couple of shipped extensions that allow interaction
@@ -902,7 +928,7 @@ line in the `config' file.
 
 File: magit.info,  Node: Interfacing with Subversion,  Next: Interfacing with Topgit,  Prev: Activating extensions,  Up: Using Magit Extensions
 
-23.2 Interfacing with Subversion
+24.2 Interfacing with Subversion
 ================================
 
 Typing `N r' runs `git svn rebase', typing `N c' runs `git svn dcommit'
@@ -916,7 +942,7 @@ the user will also be prompted for a branch to search in.
 
 File: magit.info,  Node: Interfacing with Topgit,  Next: Interfacing with StGit,  Prev: Interfacing with Subversion,  Up: Using Magit Extensions
 
-23.3 Interfacing with Topgit
+24.3 Interfacing with Topgit
 ============================
 
 Topgit (http://repo.or.cz/r/topgit.git) is a patch queue manager that
@@ -940,7 +966,7 @@ in case of conflicts.
 
 File: magit.info,  Node: Interfacing with StGit,  Next: Developing Extensions,  Prev: Interfacing with Topgit,  Up: Using Magit Extensions
 
-23.4 Interfacing with StGit
+24.4 Interfacing with StGit
 ===========================
 
 StGit (http://www.procode.org/stgit) is a Python application providing
@@ -963,7 +989,7 @@ commands let you perform the respective StGit operations.
 
 File: magit.info,  Node: Developing Extensions,  Prev: Interfacing with StGit,  Up: Using Magit Extensions
 
-23.5 Developing Extensions
+24.5 Developing Extensions
 ==========================
 
 Magit provides a generic mechanism to allow cooperation with Git-related
@@ -1060,7 +1086,7 @@ interactively, so that the relevant sections can be shown or hidden.
 
 File: magit.info,  Node: Using Git Directly,  Next: Customization,  Prev: Using Magit Extensions,  Up: Top
 
-24 Using Git Directly
+25 Using Git Directly
 *********************
 
 For situations when Magit doesn't do everything you need, you can run
@@ -1071,7 +1097,7 @@ it, and refresh the status buffer.  The output can be viewed by typing
 
 File: magit.info,  Node: Customization,  Next: Frequently Asked Questions,  Prev: Using Git Directly,  Up: Top
 
-25 Customization
+26 Customization
 ****************
 
 The following variables can be used to adapt Magit to your workflow:
@@ -1207,7 +1233,7 @@ The following variables can be used to adapt Magit to your workflow:
 
 File: magit.info,  Node: Frequently Asked Questions,  Prev: Customization,  Up: Top
 
-26 Frequently Asked Questions
+27 Frequently Asked Questions
 *****************************
 
 * Menu:
@@ -1219,7 +1245,7 @@ File: magit.info,  Node: Frequently Asked Questions,  Prev: Customization,  Up: 
 
 File: magit.info,  Node: FAQ - Changes,  Next: FAQ 1 - Troubleshooting,  Up: Frequently Asked Questions
 
-26.1 Changes
+27.1 Changes
 ============
 
    * v1.1: Changed the way extensions work. Previously, they were
@@ -1231,7 +1257,7 @@ File: magit.info,  Node: FAQ - Changes,  Next: FAQ 1 - Troubleshooting,  Up: Fre
 
 File: magit.info,  Node: FAQ 1 - Troubleshooting,  Next: FAQ 2 - Display issues,  Prev: FAQ - Changes,  Up: Frequently Asked Questions
 
-26.2 Troubleshooting
+27.2 Troubleshooting
 ====================
 
 * Menu:
@@ -1241,7 +1267,7 @@ File: magit.info,  Node: FAQ 1 - Troubleshooting,  Next: FAQ 2 - Display issues,
 
 File: magit.info,  Node: FAQ 1-1,  Up: FAQ 1 - Troubleshooting
 
-26.2.1 Question 1.1
+27.2.1 Question 1.1
 -------------------
 
 How do I get raw error messages from git?
@@ -1255,7 +1281,7 @@ buffer. There, the entire trace for the latest operation is available.
 
 File: magit.info,  Node: FAQ 2 - Display issues,  Prev: FAQ 1 - Troubleshooting,  Up: Frequently Asked Questions
 
-26.3 Display issues
+27.3 Display issues
 ===================
 
 * Menu:
@@ -1265,7 +1291,7 @@ File: magit.info,  Node: FAQ 2 - Display issues,  Prev: FAQ 1 - Troubleshooting,
 
 File: magit.info,  Node: FAQ 2-1,  Up: FAQ 2 - Display issues
 
-26.3.1 Question 2.1
+27.3.1 Question 2.1
 -------------------
 
 How do I fix international characters display?
@@ -1290,42 +1316,43 @@ You can disable this with one of the following approaches:
 
 Tag Table:
 Node: Top640
-Node: Introduction1568
-Node: Acknowledgments3040
-Node: Sections3720
-Node: Status6270
-Node: Untracked files9009
-Node: Staging and Committing10213
-Node: History14111
-Node: Reflogs17291
-Node: Commit Buffer17695
-Node: Diffing19021
-Node: Tagging20008
-Node: Resetting20457
-Node: Stashing21981
-Node: Branching23039
-Node: The Branch Manager24417
-Node: Wazzup25133
-Node: Merging25924
-Node: Rebasing26974
-Node: Rewriting27789
-Node: Pushing and Pulling30802
-Node: Submodules32729
-Node: Bisecting33149
-Node: Using Magit Extensions34364
-Node: Activating extensions34661
-Node: Interfacing with Subversion36045
-Node: Interfacing with Topgit36643
-Node: Interfacing with StGit37671
-Node: Developing Extensions38669
-Node: Using Git Directly42447
-Node: Customization42818
-Node: Frequently Asked Questions47362
-Node: FAQ - Changes47593
-Node: FAQ 1 - Troubleshooting48001
-Node: FAQ 1-148249
-Node: FAQ 2 - Display issues48553
-Node: FAQ 2-148782
+Node: Introduction1593
+Node: Acknowledgments3065
+Node: Sections3745
+Node: Status6295
+Node: Untracked files9034
+Node: Staging and Committing10238
+Node: History14136
+Node: Reflogs17316
+Node: Commit Buffer17720
+Node: Diffing19046
+Node: Tagging20033
+Node: Resetting20482
+Node: Stashing22006
+Node: Branching23064
+Node: The Branch Manager24442
+Node: Wazzup25158
+Node: Merging25949
+Node: Rebasing26999
+Node: Interactive Rebasing27825
+Node: Rewriting29117
+Node: Pushing and Pulling32142
+Node: Submodules34069
+Node: Bisecting34489
+Node: Using Magit Extensions35704
+Node: Activating extensions36001
+Node: Interfacing with Subversion37385
+Node: Interfacing with Topgit37983
+Node: Interfacing with StGit39011
+Node: Developing Extensions40009
+Node: Using Git Directly43787
+Node: Customization44158
+Node: Frequently Asked Questions48702
+Node: FAQ - Changes48933
+Node: FAQ 1 - Troubleshooting49341
+Node: FAQ 1-149589
+Node: FAQ 2 - Display issues49893
+Node: FAQ 2-150122
 
 End Tag Table
 
