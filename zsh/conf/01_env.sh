@@ -1,5 +1,6 @@
 export EDITOR=vim
 export PAGER=less
+export BROWSER=w3m
 
 # ÉpÉXÇÃê›íË
 PATH=./:$PATH
