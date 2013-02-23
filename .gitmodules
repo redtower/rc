@@ -13,3 +13,6 @@
 [submodule "zsh/plugin/z"]
 	path = zsh/plugin/z
 	url = https://github.com/rupa/z.git
+[submodule "emacs.d/elisp/yasnippet"]
+	path = emacs.d/elisp/yasnippet
+	url = https://github.com/capitaomorte/yasnippet
