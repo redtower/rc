@@ -1,23 +1,29 @@
 "---------------------------------------------------------------------------
-" ƒtƒHƒ“ƒgİ’è:
+" ãƒ•ã‚©ãƒ³ãƒˆè¨­å®š:
 "
 if has('win32')
-  " Windows—p
+  " Windowsç”¨
   "set gfn=Terminal:h10:cSHIFTJIS
-  "set gfn=Osaka|“™•:h10:cSHIFTJIS
-  set gfn=M+2VM+IPAG_circle:h12:cSHIFTJIS
+  "set gfn=Osakaï¼ç­‰å¹…:h10:cSHIFTJIS
+  "set gfn=M+2VM+IPAG_circle:h12:cSHIFTJIS
+  "
+  " Miguï¼ˆãƒŸã‚°ï¼‰ãƒ•ã‚©ãƒ³ãƒˆ - Migu 1M
+  " ref. http://mix-mplus-ipa.sourceforge.jp/migu/
+  set gfn=Migu_1M:h12:cSHIFTJIS
+
   "set guifont=MS_Gothic:h12:cSHIFTJIS
   "set guifont=MS_Mincho:h12:cSHIFTJIS
-  " sŠÔŠu‚Ìİ’è
+  "
+  " è¡Œé–“éš”ã®è¨­å®š
   set linespace=1
-  " ˆê•”‚ÌUCS•¶š‚Ì•‚ğ©“®Œv‘ª‚µ‚ÄŒˆ‚ß‚é
+  " ä¸€éƒ¨ã®UCSæ–‡å­—ã®å¹…ã‚’è‡ªå‹•è¨ˆæ¸¬ã—ã¦æ±ºã‚ã‚‹
   if has('kaoriya')
     set ambiwidth=auto
   endif
 elseif has('mac')
-  " set guifont=Osaka|“™•:h14
+  " set guifont=Osakaï¼ç­‰å¹…:h14
 elseif has('xfontset')
-  " UNIX—p (xfontset‚ğg—p)
+  " UNIXç”¨ (xfontsetã‚’ä½¿ç”¨)
   set guifontset=a14,r14,k14
 else
   set gfn=Monospace\ 11

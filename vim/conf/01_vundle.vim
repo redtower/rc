@@ -4,7 +4,9 @@ call vundle#rc('~/$VIMFILE_DIR/bundle')
 
 Bundle 'vundle'
 Bundle 'Shougo/neocomplcache'
-Bundle 'Shougo/neocomplcache-snippets-complete'
+"Bundle 'Shougo/neocomplcache-snippets-complete'
+Bundle 'Shougo/neosnippet'
+
 Bundle 'winmanager'
 Bundle 'taglist.vim'
 Bundle 'redtower/vim-browser'
@@ -18,5 +20,8 @@ Bundle 'svn.vim'
 Bundle 'Markdown'
 Bundle 'mattn/zencoding-vim'
 Bundle 'Shougo/unite.vim'
-Bundle 'nanotech/jellybeans.vim'
 Bundle 'tpope/vim-fugitive'
+
+" Color Scheme
+Bundle 'nanotech/jellybeans.vim'
+Bundle 'w0ng/vim-hybrid'
