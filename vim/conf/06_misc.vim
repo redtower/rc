@@ -37,5 +37,7 @@ nnoremap <space>. :<C-u>tabedit $MYVIMRC<CR>
 ".vimrcを再読み込みする
 nnoremap <space>s. :<C-u>source $MYVIMRC<CR>
 
+nnoremap <space>cd :cd %:h<CR>
+
 " Leader 変更
-map ¥ <leader>
+map \ <leader>

@@ -2,7 +2,7 @@
 
 if has('win32') || has('win64')
   " Windowsの場合の処理
-  :let $VIMFILE_DIR = 'vimfiles'
+  :let $VIMFILE_DIR = '.vim'
 else
   " Windows以外の場合の処理
   :let $VIMFILE_DIR = '.vim'
