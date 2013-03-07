@@ -1,5 +1,5 @@
 "---------------------------------------------------------------------------
-" ƒJƒ‰[İ’è:
+" ã‚«ãƒ©ãƒ¼è¨­å®š:
 "colorscheme morning
 "colorscheme darkblue
-colorscheme jellybeans
+colorscheme hybrid
