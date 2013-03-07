@@ -41,3 +41,4 @@ init
 caution
 ----------
 ・実際はここに「private」ディレクトリがあり、内緒の情報が記述されています。影響するのは、vimでのchangelogの設定、Emacsでのhowm,Tumble,wp-emacs,Mew,changelogの設定、Gitの設定、Muttの設定などです。（セットアップで作成している、.gitconfig、howm/はprivateに存在しています）
+
