@@ -21,6 +21,7 @@ Bundle 'Markdown'
 Bundle 'mattn/zencoding-vim'
 Bundle 'Shougo/unite.vim'
 Bundle 'tpope/vim-fugitive'
+Bundle 'spolu/dwm.vim'
 
 " Color Scheme
 Bundle 'nanotech/jellybeans.vim'
