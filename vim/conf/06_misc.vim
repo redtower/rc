@@ -41,3 +41,8 @@ nnoremap <space>cd :cd %:h<CR>
 
 " Leader 変更
 map \ <leader>
+
+if has('mac')
+    map ¥ <leader>
+endif
+
