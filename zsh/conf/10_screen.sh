@@ -3,7 +3,9 @@ function goscreen() {
     if type byobu > /dev/null ; then
         [ ${STY} ] || byobu -rx || byobu -D -RR
     else
+    if type screen > /dev/null ; then
         [ ${STY} ] || screen -rx || screen -D -RR
+    fi
     fi
 }
 

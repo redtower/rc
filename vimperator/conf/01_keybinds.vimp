@@ -34,7 +34,7 @@ noremap <A-y> :copy anchor<CR><esc>
 map qm <esc>:qmark<Space>
 map qa <esc>:qmarks<cr>
 " gor - Google Reader "
-qmark r http://www.google.co.jp/reader/
+qmark r http://feedly.com/
 " got - Tmublr "
 qmark t http://www.tumblr.com/
 " gom - Gmail "
