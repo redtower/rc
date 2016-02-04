@@ -29,4 +29,4 @@ set focuscontent
 set verbose=5
 " Add-On Barを非表示にする "
 " http://d.hatena.ne.jp/tlync/20110225/1298600213 "
-set gui+=noaddons
+set gui+=noaddons,navigation

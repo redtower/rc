@@ -1,7 +1,7 @@
 # ログイン時にscreen起動する（MacOS,Cygwin以外）
 function goscreen() {
     if type byobu > /dev/null ; then
-        [ ${STY} ] || byobu -rx || byobu -D -RR
+        [ ${STY} ] || byobu || byobu -D -RR
     else
     if type screen > /dev/null ; then
         [ ${STY} ] || screen -rx || screen -D -RR
