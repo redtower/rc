@@ -1,0 +1,115 @@
+#
+# プライグイン管理（dein.vim）
+# NeoBundle -> dein.vim
+# ref. http://qiita.com/delphinus/items/00ff2c0ba972c6e41542
+[[plugins]]
+repo = 'Shougo/dein.vim'
+#	 " NeoVundle
+#	 set nocompatible
+#	 filetype plugin indent off
+#	 
+#	 if has('vim_starting')
+#	     set runtimepath+=~/$VIMFILE_DIR/bundle/neobundle.vim/
+#	     call neobundle#begin(expand('~/$VIMFILE_DIR/bundle'))
+#	 endif
+#	 
+#	 NeoBundleFetch 'Shogo/neobundle.vim'
+
+# vimproc
+[[plugins]]
+repo = 'Shougo/vimproc.vim'
+hook_post_update = '''
+  if dein#util#_is_windows()
+    let cmd = 'tools\\update-dll-mingw'
+  elseif dein#util#_is_cygwin()
+    let cmd = 'make -f make_cygwin.mak'
+  elseif executable('gmake')
+    let cmd = 'gmake'
+  else
+    let cmd = 'make'
+  endif
+  let g:dein#plugin.build = cmd
+'''
+
+# Color Scheme / カラースキーマ
+##   hybrid
+[[plugins]]
+repo = 'w0ng/vim-hybrid'
+## jellybeans
+[[plugins]]
+repo = 'nanotech/jellybeans.vim'
+##  solarized
+[[plugins]]
+repo = 'altercation/vim-colors-solarized'
+## mustang
+[[plugins]]
+repo = 'croaker/mustang-vim'
+## molokai
+[[plugins]]
+repo = 'tomasr/molokai'
+
+# Unite
+[[plugins]]
+repo = 'Shougo/unite.vim'
+# カラースキーマー表示確認（プレビュー）
+# :Unite colorscheme -auto-preview
+[[plugins]]
+repo = 'ujihisa/unite-colorscheme'
+# :Unite file_mru で使用する file_mru
+[[plugins]]
+repo = 'Shougo/neomru.vim'
+
+# 入力補完機能（neocomplcache.vim）
+# ref. http://qiita.com/hide/items/229ff9460e75426a2d07
+#[[plugins]]
+#repo = 'Shougo/neocomplcache'
+
+# コード・スニペット（neosnippet）
+#[[plugins]]
+#repo = 'Shougo/neosnippet'
+#[[plugins]]
+#repo = 'Shougo/neosnippet-snippets'
+
+#	# ブランチやタグを指定したいとき
+#	[[plugins]]
+#	repo = 'delphinus35/typescript-vim'
+#	rev  = 'colorize-template-strings'
+#	
+#	# 特定の条件で読み込みたいとき
+#	[[plugins]]
+#	repo = 'elzr/vim-json'
+#	if   = '''! has('kaoriya')'''
+#	
+#	# 依存関係を指定したいとき
+#	[[plugins]]
+#	repo    = 'vim-airline/vim-airline'
+#	depends = ['vim-airline-themes']
+#	
+#	# 依存関係を指定したからと言って、自動でインストールはされない（ここは NeoBundle と違う）
+#	[[plugins]]
+#	repo = 'vim-airline/vim-airline-themes'
+
+
+
+#	 " NERDTreeを設定
+#	 " :NERDTree
+#	 NeoBundle 'scrooloose/nerdtree'
+#	 
+#	 
+#	 NeoBundle 'winmanager'
+#	 NeoBundle 'taglist.vim'
+#	 NeoBundle 'redtower/vim-browser'
+#	 NeoBundle 'redtower/vim-change-currentdir'
+#	 NeoBundle 'thinca/vim-github'
+#	 "NeoBundle 'edsono/vim-bufexplorer'
+#	 "Bundle 'gtags.vim'
+#	 NeoBundle 'svn.vim'
+#	 "Bundle 'duellj/DirDiff.vim'
+#	 NeoBundle 'Markdown'
+#	 NeoBundle 'mattn/emmet-vim'
+#	 NeoBundle 'tpope/vim-fugitive'
+#	 NeoBundle 'spolu/dwm.vim'
+#	 
+#	 
+#	 call neobundle#end()
+#	 filetype plugin indent on
