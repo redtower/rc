@@ -4,9 +4,6 @@
 [submodule "vim/bundle/vundle"]
 	path = vim/bundle/vundle
 	url = http://github.com/gmarik/vundle.git
-[submodule "vimperator/vimperator-plugins"]
-	path = vimperator/vimperator-plugins
-	url = https://github.com/vimpr/vimperator-plugins.git
 [submodule "zsh/plugin/zaw"]
 	path = zsh/plugin/zaw
 	url = https://github.com/zsh-users/zaw.git
