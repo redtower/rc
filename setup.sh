@@ -37,22 +37,6 @@ LNK(){
     echo "created $T";
 }
 
-# Firefox Plugin Vimperator
-T1="$HOME/.vimperatorrc"
-T2="$HOME/.vimperator"
-F1="$HOME/rc/vimperatorrc"
-F2="$HOME/rc/vimperator"
-
-echo "setup Vimperator（$T1, $T2） ok? [y/n]"
-read ANSWER
-
-if [ "${ANSWER}" = "y" ];
-
-   then
-    LNK $F1 $T1
-    LNK $F2 $T2
-fi
-
 # Vim
 T1="$HOME/.vimrc"
 T2="$HOME/.gvimrc"
