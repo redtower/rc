@@ -2,7 +2,7 @@
 function t()
 {
   create_new_session="Create New Session"
-  ID="`tmux list-sessions`\n${create_new_session}:"
+  ID="`tmux list-sessions | sort -r`\n${create_new_session}:"
 
   ID="`echo $ID | peco | cut -d: -f1`"
   if [[ "$ID" = "${create_new_session}" ]]; then
