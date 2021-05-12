@@ -1,0 +1,8 @@
+
+# コミットID, コミット日付、コミットメッセージを表示
+set main-view = id date commit-title:graph=yes,refs=yes
+
+# KEY n: ブランチ作成
+bind refs n ?git checkout -b "%(prompt Enter new branch name: )" %(branch)
+# KEY p: プッシュ
+bind refs p ?git push -u origin %(branch)
