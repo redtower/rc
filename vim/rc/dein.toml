@@ -113,3 +113,17 @@ repo = 'Shougo/neomru.vim'
 #	 
 #	 call neobundle#end()
 #	 filetype plugin indent on
+
+
+# Fern を設定(ファイルマネージャー)
+# :Fern
+[[plugins]]
+repo = 'lambdalisue/fern.vim'
+
+
+# ステータスバー、タブバー表示
+[[plugins]]
+repo = 'vim-airline/vim-airline'
+[[plugins]]
+repo = 'vim-airline/vim-airline-themes'
+
