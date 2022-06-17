@@ -1,16 +1,25 @@
 " vim:set ts=8 sts=2 sw=2 tw=0: (この行に関しては:help modelineを参照)
 
-if has('win32') || has('win64')
-  " Windowsの場合の処理
-  :let $VIMFILE_DIR = '.vim'
+if has('nvim')
+  " Neovim
+  :let filelist = glob("$XDG_CONFIG_HOME/nvim/config/[0-9]*")
+
 else
-  " Windows以外の場合の処理
-  :let $VIMFILE_DIR = '.vim'
+  " Vim
+  "
+  if has('win32') || has('win64')
+    " Windowsの場合の処理
+    :let $VIMFILE_DIR = '.vim'
+  else
+    " Windows以外の場合の処理
+    :let $VIMFILE_DIR = '.vim'
+  endif
+  :let $LOCALVIM = '$HOME/$VIMFILE_DIR/local/'
+  :let filelist = glob("$HOME/$VIMFILE_DIR/conf/[0-9]*")
+
 endif
 
-:let $LOCALVIM = '~/$VIMFILE_DIR/local/'
 
-:let filelist = glob("~/$VIMFILE_DIR/conf/[0-9]*")
 :let splitted = split(filelist, "\n")
 :for file in splitted
     :let $fconf = file
@@ -19,6 +28,4 @@ endif
 
 "---------------------------------------------------------------------------
 " ChangeLog関連の設定ファイル
-if filereadable($HOME . '/rc/private/changelog.vim')
-  source ~/rc/private/changelog.vim
-endif
+source $HOME/rc/private/changelog.vim

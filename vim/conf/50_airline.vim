@@ -2,7 +2,7 @@
 " ステータスラインに表示する項目を変更する
 let g:airline#extensions#default#layout = [
   \ [ 'a', 'b', 'c' ],
-  \ ['z']
+  \ [ 'x', 'y', 'z']
   \ ]
 let g:airline_section_c = '%t %M'
 let g:airline_section_z = get(g:, 'airline_linecolumn_prefix', '').'%3l:%-2v'

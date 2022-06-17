@@ -12,3 +12,4 @@ emacs.d/anything-c-adaptive-history
 emacs.d/tutorial/
 emacs.d/server/
 byobu/.ssh-agent
+/.project

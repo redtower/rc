@@ -5,6 +5,8 @@
 set nobackup
 " スワップファイルを作成しない
 set noswapfile
+" undoファイルを作成しない
+set noundofile
 
 "---------------------------------------------------------------------------
 " キー操作登録：
@@ -43,6 +45,6 @@ nnoremap <space>cd :cd %:h<CR>
 map \ <leader>
 
 if has('mac')
-    map ¥ <leader>
+    map \ <leader>
 endif
 
